@@ -6,7 +6,7 @@ I have used [VM ware workstation](https://www.vmware.com/products/workstation-pl
 
 Setup:
 
-1. On the ubuntu VM download [beam](https://github.com/samply/beam#development-environment) and start the default development environment by running ´https://github.com/samply/beam#development-environment´
+1. On the ubuntu VM download [beam](https://github.com/samply/beam#development-environment) and start the default development environment by running `./dev/beamdev start`
 
 
 
