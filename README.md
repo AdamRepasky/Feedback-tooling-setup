@@ -8,7 +8,9 @@ Setup:
 0. Install docker on both machines
 
 1. On the ubuntu VM download [beam](https://github.com/samply/beam#development-environment) and start the default development environment by running `./dev/beamdev start`
+
 2. On the ubuntu VM download and run [feedback-hub](https://github.com/AdamRepasky/feedback-hub)
+
 3.1 On the Windows host machine download the Bridgehead (Teiler) from this repo and start it by running:
 
 `docker-compose up -d login-db`
@@ -19,6 +21,7 @@ Setup:
 `docker-compose up -d blaze`
 
 3.2 Create profile in Bridgehead UI
+
 4. On the Windows download and run the [Feedback Agent](https://github.com/AdamRepasky/feedback-agent)
 
 Everything should be then set up to try the Feedback addition process.
