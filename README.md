@@ -15,10 +15,15 @@ Setup:
 3. On the Windows host machine download the Bridgehead (Teiler) from this repo and start it by running:
 
 `docker-compose up -d login-db`
+
 `docker-compose up -d login`
+
 `docker-compose up -d teiler-root-config teiler-ui teiler-core`
+
 `docker-compose up -d exporter-db`
-`docker-compose up -d exporter`
+
+`docker-compose up -d exporter`   -This I have to discuss with David once more, won't work yet TODO
+
 `docker-compose up -d blaze`
 
 And create profile in Bridgehead UI
