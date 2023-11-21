@@ -1,0 +1,40 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "Keycloak",
+            "Group": "Servers",
+            "Host": "login-db",
+            "Port": 5432,
+            "MaintenanceDB": "keycloak",
+            "Username": "keycloak-user",
+            "SSLMode": "prefer"
+        },
+        "2": {
+            "Name": "EHRDB",
+            "Group": "Servers",
+            "Host": "ehrdb",
+            "Port": 5432,
+            "MaintenanceDB": "postgres",
+            "Username": "postgres",
+            "SSLMode": "prefer"
+        },
+        "3": {
+            "Name": "Opal",
+            "Group": "Servers",
+            "Host": "opal-db",
+            "Port": 5432,
+            "MaintenanceDB": "opal",
+            "Username": "opal",
+            "SSLMode": "prefer"
+        },
+        "4": {
+            "Name": "Exporter",
+            "Group": "Servers",
+            "Host": "exporter-db",
+            "Port": 5432,
+            "MaintenanceDB": "exporter",
+            "Username": "exporter",
+            "SSLMode": "prefer"
+        }
+    }
+}
