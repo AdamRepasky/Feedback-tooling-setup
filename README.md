@@ -28,7 +28,13 @@ Setup:
 
 And create profile in Bridgehead UI
 
-4. On the Windows download and run the [Feedback Agent](https://github.com/AdamRepasky/feedback-agent)
+4. Use bbmri-fhir-gen and blazectl to generate and upload test data:
+
+`bbmri-fhir-gen.exe patients -n 100`
+
+`blazectl.exe --server http://localhost:8091/fhir upload patients`
+
+6. On the Windows download and run the [Feedback Agent](https://github.com/AdamRepasky/feedback-agent)
 
 Everything should be then set up to try the Feedback addition process.
 You should be able to access Feedback Agent UI through the Bridgehead UI, select specimens for feedback addition, then in Feedback Hub link the data with feedback refference.
