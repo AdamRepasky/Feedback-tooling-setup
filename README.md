@@ -5,6 +5,7 @@ This serves as brief manual how to setup the evironment used to develop and test
 I have used [VM ware workstation](https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html) to tun virtual instance of [ubuntu-22.04.2-desktop-amd64](https://ubuntu.com/download/desktop) on my host machine with Windows 10. In network adapter settings I have used Bridged network connection with replicated network connection state.
 
 Setup:
+
 0. Install docker on both machines
 
 1. On the ubuntu VM download [beam](https://github.com/samply/beam#development-environment) and start the default development environment by running `./dev/beamdev start`
