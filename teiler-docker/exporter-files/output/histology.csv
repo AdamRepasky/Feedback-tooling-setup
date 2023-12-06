@@ -1,0 +1,10 @@
+Histology-ID	Code	Pat-ID
+http://localhost:8091/fhir/Observation/hist0d5b7e9ed2d186c0/_history/15	8140/3	Patient/640b7e4729b49fce
+http://localhost:8091/fhir/Observation/hist0bef9f6c878d63fd/_history/16	8097/3	Patient/25a6da49081b2451
+http://localhost:8091/fhir/Observation/hist4ee6635446e4f99d/_history/13	8720/3	Patient/fcfb81e6f0919683
+http://localhost:8091/fhir/Observation/hist637bedaedffd26a2/_history/16	8097/3	Patient/25a6da49081b2451
+http://localhost:8091/fhir/Observation/histf4fade577c765c5a/_history/18	8090/3	Patient/da3a666eec13ab35
+http://localhost:8091/fhir/Observation/hist6ad5988b1413b19b/_history/8	8721/3	Patient/bec78f5564afe39d
+http://localhost:8091/fhir/Observation/histeaab695a5f1ddb9b/_history/17	8263/3	Patient/ef03f7c3017bb5b7
+http://localhost:8091/fhir/Observation/hist2105bf84048c80ff/_history/10	8312/3	Patient/d90ef06fdefb64a3
+http://localhost:8091/fhir/Observation/hist665d30aa784517bc/_history/9	8041/3	Patient/c01e52ddb7875b4b

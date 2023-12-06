@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  blaze:
+    image: "samply/blaze:0.21"
+    environment:
+      BASE_URL: "http://localhost:8091"
+      #BASE_URL: "http://blaze:8080"
+      JAVA_TOOL_OPTIONS: "-Xmx2g"
+      ENFORCE_REFERENTIAL_INTEGRITY: "false"
+    ports:
+      - "8091:8080"
+    volumes:
+      - "blaze-dktk-bridge-dev:/app/data"
+    networks:
+      - teiler-ui
+
+networks:
+  teiler-ui:
+    name: "teiler-ui"
+
+volumes:
+  blaze-dktk-bridge-dev:
+    name: "blaze-dktk-bridge-dev"

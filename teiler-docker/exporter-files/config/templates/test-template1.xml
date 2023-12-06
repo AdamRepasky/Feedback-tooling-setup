@@ -1,0 +1,27 @@
+<template id="test-template1" excel-filename="my-test.xlsx">
+  <container csv-filename="patient.csv" excel-sheet="Patient" order="1">
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" fhir-path="Patient.id" order="1"/>
+    <attribute csv-column="Pseudonym" excel-column="Pseudonym" fhir-path="Patient.identifier.value" order="2"/>
+    <attribute csv-column="Gender" excel-column="Gender" fhir-path="Patient.gender.value" order="3"/>
+    <attribute csv-column="Birthday" excel-column="Birthday" fhir-path="Patient.birthDate.value" order="4"/>
+  </container>
+  <container csv-filename="histology.csv" excel-sheet="Histology" order="2">
+    <attribute csv-column="Histology-ID" excel-column="Histology-ID" fhir-path="Observation.where(code.coding.code = '59847-4').id" order="1"/>
+    <attribute csv-column="Code" excel-column="Code" fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.code" order="2"/>
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" fhir-path="Observation.where(code.coding.code = '59847-4').subject.reference.value" order="3"/>
+    <!--<attribute csv-column="Gender" excel-column="Gender" fhir-path="Patient.gender.value" order="4" resource-fhir-path-ids="Observation.where(code.coding.code = '59847-4').subject.reference.value,asdfasm,asdfasdf" />-->
+  </container>
+  <container csv-filename="molecular-marker.csv" excel-sheet="Molecular Marker" order="3">
+    <attribute csv-column="Molecular-Marker-ID" excel-column="Molecular-Marker-ID" fhir-path="Observation.where(code.coding.code = '69548-6').id" order="1"/>
+    <attribute csv-column="Code" excel-column="Code" fhir-path="Observation.where(code.coding.code = '69548-6').value.coding.code" order="2"/>
+    <attribute csv-column="Component-Code" excel-column="Component-Code" fhir-path="Observation.where(code.coding.code = '69548-6').component.value.coding.code" order="3"/>
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" fhir-path="Observation.where(code.coding.code = '69548-6').subject.reference.value" order="4"/>
+  </container>
+
+  <fhir-rev-include>Observation:patient</fhir-rev-include>
+<!--  <fhir-rev-include>Condition:patient</fhir-rev-include>
+  <fhir-rev-include>Specimen:patient</fhir-rev-include>
+  <fhir-rev-include>Procedure:patient</fhir-rev-include>
+  <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>
+  <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include> -->
+</template>
