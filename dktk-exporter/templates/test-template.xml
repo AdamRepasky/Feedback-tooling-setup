@@ -1,0 +1,27 @@
+<template id="test-template1" excel-filename="my-test-${TIMESTAMP}.xlsx" source-id="blaze-store">
+  <container csv-filename="patient-${TIMESTAMP}.csv" excel-sheet="Patient">
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" val-fhir-path="Patient.id"/>
+    <attribute csv-column="Pseudonym" excel-column="Pseudonym" val-fhir-path="Patient.identifier.value"/>
+    <attribute csv-column="Gender" excel-column="Gender" val-fhir-path="Patient.gender.value"/>
+    <attribute csv-column="Birthday" excel-column="Birthday" val-fhir-path="Patient.birthDate.value"/>
+  </container>
+  <container csv-filename="histology-${TIMESTAMP}.csv" excel-sheet="Histology">
+    <attribute csv-column="Histology-ID" excel-column="Histology-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').id"/>
+    <attribute csv-column="Code" excel-column="Code" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.code"/>
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').subject.reference.value"/>
+    <attribute csv-column="Gender" excel-column="Gender" val-fhir-path="Patient.gender.value" join-fhir-path="Observation.where(code.coding.code = '59847-4').subject.reference.value"/>
+  </container>
+  <container csv-filename="molecular-marker-${TIMESTAMP}.csv" excel-sheet="Molecular Marker">
+    <attribute csv-column="Molecular-Marker-ID" excel-column="Molecular-Marker-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').id" />
+    <attribute csv-column="Code" excel-column="Code" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.coding.code" />
+    <attribute csv-column="Component-Code" excel-column="Component-Code" val-fhir-path="Observation.where(code.coding.code = '69548-6').component.value.coding.code" />
+    <attribute csv-column="Pat-ID" excel-column="Pat-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').subject.reference.value" />
+  </container>
+
+  <fhir-rev-include>Observation:patient</fhir-rev-include>
+  <!--  <fhir-rev-include>Condition:patient</fhir-rev-include>
+    <fhir-rev-include>Specimen:patient</fhir-rev-include>
+    <fhir-rev-include>Procedure:patient</fhir-rev-include>
+    <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>
+    <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include> -->
+</template>

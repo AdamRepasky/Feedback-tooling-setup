@@ -1,0 +1,46 @@
+<template id="focus-dktk" excel-filename="Focus-${TIMESTAMP}.xlsx" source-id="blaze-store" >
+
+    <container csv-filename="MeasureReport-${TIMESTAMP}.csv" excel-sheet="MeasureReport" xml-filename="MeasureReport-${TIMESTAMP}.xml" xml-root-element="MeasureReport" xml-element="MeasureReport" json-filename="MeasureReport-${TIMESTAMP}.json" json-key="MeasureReport" >
+        <attribute csv-column="Stratum-ID" xml-element="Stratum-ID" json-key="Stratum-ID" excel-column="Stratum-ID" val-fhir-path="MeasureReport.id.value" anonym="ST" op="EXTRACT_RELATIVE_ID" />
+        <attribute csv-column="Group" xml-element="Group" json-key="Group" excel-column="Group" val-fhir-path="MeasureReport.group.code.text.value"  />
+        <attribute csv-column="GroupCount" xml-element="GroupCount" json-key="GroupCount" excel-column="GroupCount" val-fhir-path="MeasureReport.group.population.count.value"  />
+        <attribute csv-column="Stratifier" xml-element="Stratifier" json-key="Stratifier" excel-column="Stratifier" val-fhir-path="MeasureReport.group.stratifier.code.text.value"  />
+        <attribute csv-column="StratifierValue" xml-element="StratifierValue" json-key="StratifierValue" excel-column="StratifierValue" val-fhir-path="MeasureReport.group.stratifier.stratum.value.text.value"  />
+        <attribute csv-column="StratifierCount" xml-element="StratifierCount" json-key="StratifierCount" excel-column="StratifierCount" val-fhir-path="MeasureReport.group.stratifier.stratum.population.count.value"  />
+    </container>
+
+    <cql>
+        <token key="DKTK_STRAT_GENDER_STRATIFIER" value= "define Gender:&#10;if (Patient.gender is null) then 'unknown' else Patient.gender" />
+        <token key="DKTK_STRAT_AGE_STRATIFIER" value= "define AgeClass:&#10;if (Patient.birthDate is null) then 'unknown' else ToString((AgeInYears() div 10) * 10)" />
+        <token key="DKTK_STRAT_DECEASED_STRATIFIER" value= "define PatientDeceased:&#10;First (from [Observation: Code '75186-7' from loinc] O return O.value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/VitalstatusCS').code.first())&#10;define Deceased:&#10;if (PatientDeceased is null) then 'unbekannt' else PatientDeceased" />
+        <token key="DKTK_STRAT_DIAGNOSIS_STRATIFIER" value= "define Diagnosis:&#10;if InInitialPopulation then [Condition] else {} as List&lt;Condition&gt;&#10;&#10;define function DiagnosisCode(condition FHIR.Condition):&#10;condition.code.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.first()" />
+        <token key="DKTK_STRAT_SPECIMEN_STRATIFIER" value= "define Specimen:&#10;if InInitialPopulation then [Specimen] else {} as List&lt;Specimen&gt;&#10;&#10;define function SampleType(specimen FHIR.Specimen):&#10;specimen.type.coding.where(system = 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType').code.first()" />
+        <token key="UCT_STRAT_SPECIMEN_STRATIFIER" value= "define Specimen:&#10;if InInitialPopulation then [Specimen] else {} as List&lt;Specimen&gt;&#10;&#10;define function SampleType(specimen FHIR.Specimen):&#10;specimen.type.coding.where(system = 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType').code.first()&#10;&#10;define function Lagerort(specimen FHIR.Specimen):&#10;specimen.extension.where(url = 'http://uct-locator/specimen/storage').value.coding.code.first()&#10;&#10;define function annotations(specimen FHIR.Specimen):&#10;(if (specimen.type.coding.where(system = 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType').code.first() is null) then 1 else 0) +&#10;(if (specimen.collection.collected is null) then 1 else 0)" />
+        <token key="DKTK_STRAT_PROCEDURE_STRATIFIER" value= "define Procedure:&#10;if InInitialPopulation then [Procedure] else {} as List &lt;Procedure&gt;&#10;&#10;define function ProcedureType(procedure FHIR.Procedure):&#10;procedure.category.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SYSTTherapieartCS').code.first()" />
+        <token key="DKTK_STRAT_MEDICATION_STRATIFIER" value= "define MedicationStatement:&#10;if InInitialPopulation then [MedicationStatement] else {} as List &lt;MedicationStatement&gt;" />
+        <token key="DKTK_STRAT_ENCOUNTER_STRATIFIER" value= "define Encounter:&#10;if InInitialPopulation then [Encounter] else {} as List&lt;Encounter>&#10;&#10;define function Departments(encounter FHIR.Encounter):&#10;encounter.identifier.where(system = 'http://dktk.dkfz.de/fhir/sid/hki-department').value.first()" />
+        <token key="DKTK_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:" />
+        <token key="EXLIQUID_CQL" value= "define ExliquidSpecimen:&#10;  from [Specimen] S&#10;  where S.identifier.system contains 'http://dktk.dkfz.de/fhir/sid/exliquid-specimen'&#10;define retrieveCondition:&#10; First(from [Condition] C&#10;  return C.code.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.first())&#10;define Diagnosis:&#10;  if (retrieveCondition is null) then 'unknown' else retrieveCondition&#10;define function SampleType(specimen FHIR.Specimen):&#10;  specimen.type.coding.where(system = 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType').code.first()" />
+        <token key="EXLIQUID_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:&#10;   exists ExliquidSpecimen&#10;" />
+
+        <measure-parameters>
+            {
+            "resourceType": "Parameters",
+            "parameter": [
+            {
+            "name": "periodStart",
+            "valueDate": "2000"
+            },
+            {
+            "name": "periodEnd",
+            "valueDate": "2030"
+            },
+            {
+            "name": "reportType",
+            "valueCode": "subject-list"
+            }
+            ]
+            }
+        </measure-parameters>
+    </cql>
+</template>

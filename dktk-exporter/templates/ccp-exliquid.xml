@@ -1,0 +1,74 @@
+<template id="ccp-exliquid" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" >
+
+  <container csv-filename="Patient-${TIMESTAMP}.csv" excel-sheet="Patient" xml-filename="Patient-${TIMESTAMP}.xml" xml-root-element="Patients" xml-element="Patient" json-filename="Patient-${TIMESTAMP}.json" json-key="Patients" >
+    <attribute csv-column="Patient-ID" xml-element="Patient-ID" json-key="Patient-ID" excel-column="Patient-ID" val-fhir-path="Patient.id.value" anonym="Pat" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="DKTK-ID-Global" xml-element="DKTK-ID-Global" json-key="DKTK-ID-Global" excel-column="DKTK-ID-Global" val-fhir-path="Patient.identifier.where(type.coding.code = 'Global').value.value"/>
+    <attribute csv-column="DKTK-ID-Lokal" xml-element="DKTK-ID-Lokal" json-key="DKTK-ID-Lokal" excel-column="DKTK-ID-Lokal" val-fhir-path="Patient.identifier.where(type.coding.code = 'Lokal').value.value" />
+    <attribute csv-column="Geburtsdatum" xml-element="Geburtsdatum" json-key="Geburtsdatum" excel-column="Geburtsdatum" val-fhir-path="Patient.birthDate.value"/>
+    <attribute csv-column="Geschlecht" xml-element="Geschlecht" json-key="Geschlecht" excel-column="Geschlecht" val-fhir-path="Patient.gender.value" />
+    <attribute csv-column="Datum des letztbekannten Vitalstatus" xml-element="Datum-des-letztbekannten-Vitalstatus" json-key="Datum des letztbekannten Vitalstatus" excel-column="Datum des letztbekannten Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').effective.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <attribute csv-column="Vitalstatus" xml-element="Vitalstatus" json-key="Vitalstatus" excel-column="Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').value.coding.code.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute csv-column="Tod tumorbedingt" xml-element="Tod-tumorbedingt" json-key="Tod tumorbedingt" excel-column="Tod tumorbedingt" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute csv-column="Todesursachen" xml-element="Todesursachen" json-key="Todesursachen" excel-column="Todesursachen" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/JNUCS').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+  </container>
+
+  <container csv-filename="Diagnosis-${TIMESTAMP}.csv" excel-sheet="Diagnosis" xml-filename="Diagnosis-${TIMESTAMP}.xml" xml-root-element="Diagnoses" xml-element="Diagnosis" json-filename="Diagnosis-${TIMESTAMP}.json" json-key="Diagnoses">
+    <attribute csv-column="Diagnosis-ID" xml-element="Diagnosis-ID" json-key="Diagnosis-ID" excel-column="Diagnosis-ID" val-fhir-path="Condition.id.value" anonym="Dia" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Patient-ID" xml-element="Patient-ID" json-key="Patient-ID" excel-column="Patient-ID" val-fhir-path="Condition.subject.reference.value" anonym="Pat"/>
+    <attribute csv-column="Primärdiagnose" xml-element="Primärdiagnose" json-key="Primärdiagnose" excel-column="Primärdiagnose" val-fhir-path="Condition.code.coding.code.value"/>
+    <attribute csv-column="Tumor Diagnosedatum" xml-element="Tumor-Diagnosedatum" json-key="Tumor Diagnosedatum" excel-column="Tumor Diagnosedatum" val-fhir-path="Condition.onset.value"/>
+    <attribute csv-column="Primaertumor Diagnosetext" xml-element="Primaertumor-Diagnosetext" json-key="Primaertumor Diagnosetext" excel-column="Primaertumor Diagnosetext" val-fhir-path="Condition.code.text.value"/>
+    <attribute csv-column="Version des ICD-10-Katalogs" xml-element="Version-des-ICD-10-Katalogs" json-key="Version des ICD-10-Katalogs" excel-column="Version des ICD-10-Katalogs" val-fhir-path="Condition.code.coding.version.value"/>
+    <attribute csv-column="Lokalisation" xml-element="Lokalisation" json-key="Lokalisation" excel-column="Lokalisation" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').code.value"/>
+    <attribute csv-column="ICD-O Katalog Topographie (Version)" xml-element="ICD-O-Katalog-Topographie-Version" json-key="ICD-O Katalog Topographie (Version)" excel-column="ICD-O Katalog Topographie (Version)" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').version.value"/>
+    <attribute csv-column="Seitenlokalisation nach ADT-GEKID" xml-element="Seitenlokalisation-nach-ADT-GEKID" json-key="Seitenlokalisation nach ADT-GEKID" excel-column="Seitenlokalisation nach ADT-GEKID" val-fhir-path="Condition.bodySite.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS').code.value"/>
+  </container>
+
+  <container csv-filename="Sample-${TIMESTAMP}.csv" excel-sheet="Sample" xml-filename="Sample-${TIMESTAMP}.xml" xml-root-element="Samples" xml-element="Sample" json-filename="Sample-${TIMESTAMP}.json" json-key="Samples">
+    <attribute csv-column="Sample-ID" xml-element="Sample-ID" json-key="Sample-ID" excel-column="Sample-ID" val-fhir-path="Specimen.id" anonym="Sam" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Patient-ID" xml-element="Patient-ID" json-key="Patient-ID" excel-column="Patient-ID" val-fhir-path="Specimen.subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Entnahmedatum" xml-element="Entnahmedatum" json-key="Entnahmedatum" excel-column="Entnahmedatum" val-fhir-path="Specimen.collection.collectedDateTime.value"/>
+    <attribute csv-column="Probentyp" xml-element="Probenart" json-key="Probenart" excel-column="Probenart" val-fhir-path="Specimen.type.coding.code.value"/>
+    <attribute csv-column="Status Probe" xml-element="Status" json-key="Status" excel-column="Status" val-fhir-path="Specimen.status.code.value"/>
+    <attribute csv-column="Probe-Projektbezeichnung" xml-element="Projekt" json-key="Projekt" excel-column="Projekt" val-fhir-path="Specimen.identifier.system.value"/>
+   <!-- @TODO: it is still necessary to clarify whether it would not be better to take the quantity of collection.quantity -->
+    <attribute csv-column="Restmenge" xml-element="Menge" json-key="Menge" excel-column="Menge" val-fhir-path="Specimen.container.specimenQuantity.value.value"/>
+    <attribute csv-column="Restmenge Einheit" xml-element="Probenmenge Einheit" json-key="Probenmenge Einheit" excel-column="Probenmenge Einheit" val-fhir-path="Specimen.container.specimenQuantity.unit.value"/>
+    <attribute csv-column="Aliquot" xml-element="Aliquot" json-key="Aliquot" excel-column="Aliquot" val-fhir-path="Specimen.parent.reference.exists().value" />
+  </container>
+
+  <cql>
+    <default-fhir-search-query>Patient</default-fhir-search-query>
+    <token key="DKTK_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:" />
+    <measure-parameters>
+      {
+      "resourceType": "Parameters",
+      "parameter": [
+      {
+      "name": "periodStart",
+      "valueDate": "2000"
+      },
+      {
+      "name": "periodEnd",
+      "valueDate": "2030"
+      },
+      {
+      "name": "reportType",
+      "valueCode": "subject-list"
+      }
+      ]
+      }
+    </measure-parameters>
+  </cql>
+
+
+
+
+  <fhir-rev-include>Observation:patient</fhir-rev-include>
+  <fhir-rev-include>Condition:patient</fhir-rev-include>
+  <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include>
+  <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>
+  <fhir-rev-include>Procedure:patient</fhir-rev-include>
+  <fhir-rev-include>Specimen:patient</fhir-rev-include>
+
+</template>

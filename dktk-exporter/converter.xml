@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="blazeStoreFhirSearchQueryToBundleConverter" class="de.samply.fhir.FhirSearchQueryConverter">
+        <constructor-arg name="fhirStoreUrl" value="http://blaze:8080/fhir"/>
+        <constructor-arg name="sourceId" value="blaze-store"/>
+        <property name="pageSize" value="#{systemEnvironment['BLAZE_PAGE_SIZE'] ?: '50'}"/>
+    </bean>
+
+    <bean id="blazeStoreCqlToFhirSearchConverter" class="de.samply.fhir.cql.CqlToFhirSearchConverter">
+        <constructor-arg name="fhirStoreUrl" value="http://blaze:8080/fhir"/>
+        <constructor-arg name="sourceId" value="blaze-store"/>
+    </bean>
+
+    <bean id="blazeStoreCqlToBundleConverter" class="de.samply.fhir.cql.CqlToBundleConverter">
+        <constructor-arg name="fhirStoreUrl" value="http://blaze:8080/fhir"/>
+        <constructor-arg name="sourceId" value="blaze-store"/>
+    </bean>
+    <bean id="csvToOpalConverter" class="de.samply.opal.CsvToOpalConverter">
+        <constructor-arg name="opalServer" ref="opalServer"/>
+        <constructor-arg name="targetId" value="opal"/>
+    </bean>
+
+    <bean id="opalServer" class="de.samply.opal.OpalServer">
+        <constructor-arg name="url" value="http://opal:8080/opal"/>
+        <constructor-arg name="database" value="postgresdb"/>
+        <constructor-arg name="user" value="exporter"/>
+        <constructor-arg name="password" value="#{systemEnvironment['OPAL_PASSWORD']}"/>
+        <constructor-arg name="filesDirectory" value="/projects"/>
+    </bean>
+
+</beans>

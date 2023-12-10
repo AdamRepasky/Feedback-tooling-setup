@@ -1,0 +1,280 @@
+<template id="ccp-qb" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" >
+<!--<template id="ccp-qb" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" fhir-profile-url="/mnt/c/Temp/de.dktk.oncology-1.2.0.tgz" >-->
+<!--<template id="ccp-qb" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" fhir-profile-url="file://C:/Temp/de.dktk.oncology-1.2.0.tgz" >-->
+<!--<template id="ccp-qb" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" fhir-profile-url="https://simplifier.net/packages/de.dktk.oncology/1.2.0/$download" >-->
+<!--<template id="ccp-qb" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" fhir-profile-url="https://simplifier.net/packages/de.dktk.oncology/1.2.0" >-->
+
+  <container csv-filename="Patient-${TIMESTAMP}.csv">
+    <attribute csv-column="Patient-ID" val-fhir-path="Patient.id.value" anonym="Pat" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="DKTK-ID-Global" val-fhir-path="Patient.identifier.where(type.coding.code = 'Global').value.value"/>
+    <attribute csv-column="DKTK-ID-Lokal" val-fhir-path="Patient.identifier.where(type.coding.code = 'Lokal').value.value" />
+    <attribute csv-column="Geburtsdatum" val-fhir-path="Patient.birthDate.value"/>
+    <attribute csv-column="Geschlecht" val-fhir-path="Patient.gender.value" />
+    <attribute csv-column="Datum des letztbekannten Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').effective.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <attribute csv-column="Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').value.coding.code.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute csv-column="Tod tumorbedingt" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute csv-column="Todesursachen" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/JNUCS').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+
+    <attribute csv-column="Geburtsdatum-Validation" val-fhir-path="Patient.birthDate.value" validation="true" />
+    <attribute csv-column="Geschlecht-Validation" val-fhir-path="Patient.gender.value"  validation="true" />
+    <attribute csv-column="Datum des letztbekannten Vitalstatus-Validation" val-fhir-path="Observation.where(code.coding.code = '75186-7').effective.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value" validation="true" />
+    <attribute csv-column="Vitalstatus-Validation" val-fhir-path="Observation.where(code.coding.code = '75186-7').value.coding.code.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value" validation="true" />
+    <!--<attribute csv-column="Tod tumorbedingt-Validation" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value" validation="true" />-->
+    <attribute csv-column="Todesursachen-Validation" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/JNUCS').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value" validation="true" />
+  </container>
+
+  <container csv-filename="Diagnosis-${TIMESTAMP}.csv">
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Condition.id.value" anonym="Dia" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Condition.subject.reference.value" anonym="Pat"/>
+    <attribute csv-column="Primärdiagnose" val-fhir-path="Condition.code.coding.code.value"/>
+    <attribute csv-column="Tumor Diagnosedatum" val-fhir-path="Condition.onset.value"/>
+    <attribute csv-column="Primaertumor Diagnosetext" val-fhir-path="Condition.code.text.value"/>
+    <attribute csv-column="Version des ICD-10-Katalogs" val-fhir-path="Condition.code.coding.version.value"/>
+    <attribute csv-column="Lokalisation" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').code.value"/>
+    <attribute csv-column="ICD-O Katalog Topographie (Version)" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').version.value"/>
+    <attribute csv-column="Seitenlokalisation nach ADT-GEKID" val-fhir-path="Condition.bodySite.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS').code.value"/>
+
+    <!--<attribute csv-column="Primärdiagnose-Validation" val-fhir-path="Condition.code.coding.code.value" validation="true" />-->
+    <attribute csv-column="Tumor Diagnosedatum-Validation" val-fhir-path="Condition.onset.value" validation="true" />
+    <attribute csv-column="Primaertumor Diagnosetext-Validation" val-fhir-path="Condition.code.text.value" validation="true" />
+    <!--<attribute csv-column="Version des ICD-10-Katalogs-Validation" val-fhir-path="Condition.code.coding.version.value" validation="true" />-->
+    <!--<attribute csv-column="Lokalisation-Validation" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').code.value" validation="true" />-->
+    <attribute csv-column="ICD-O Katalog Topographie (Version)-Validation" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').version.value" validation="true" />
+    <attribute csv-column="Seitenlokalisation nach ADT-GEKID-Validation" val-fhir-path="Condition.bodySite.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS').code.value" validation="true" />
+  </container>
+
+  <container csv-filename="Progress-${TIMESTAMP}.csv">
+<!--it would be better to generate a an ID, instead of extracting the ClinicalImpression id-->
+    <attribute csv-column="Progress-ID" val-fhir-path="ClinicalImpression.id.value" anonym="Pro" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="ClinicalImpression.problem.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="ClinicalImpression.subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Untersuchungs-, Befunddatum im Verlauf" val-fhir-path="ClinicalImpression.effective.value" />
+    <!-- just for evaluation: redundant to Untersuchungs-, Befunddatum im Verlauf-->
+    <attribute csv-column="Datum lokales oder regionäres Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').effective.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+    <attribute csv-column="Gesamtbeurteilung Tumorstatus" val-fhir-path="Observation.where(code.coding.code = '21976-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"/>
+    <attribute csv-column="Lokales oder regionäres Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"/>
+    <attribute csv-column="Lymphknoten-Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4370-8').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+    <attribute csv-column="Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = 'LA4226-2').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+
+    <attribute csv-column="Untersuchungs-, Befunddatum im Verlauf-Validation" val-fhir-path="ClinicalImpression.effective.value"  validation="true" />
+    <attribute csv-column="Datum lokales oder regionäres Rezidiv-Validation" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').effective.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"  validation="true" />
+    <attribute csv-column="Gesamtbeurteilung Tumorstatus-Validation" val-fhir-path="Observation.where(code.coding.code = '21976-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" validation="true" />
+    <attribute csv-column="Lokales oder regionäres Rezidiv-Validation" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" validation="true" />
+    <attribute csv-column="Lymphknoten-Rezidiv-Validation" val-fhir-path="Observation.where(code.coding.code = 'LA4370-8').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"  validation="true" />
+    <attribute csv-column="Fernmetastasen-Validation" val-fhir-path="Observation.where(code.coding.code = 'LA4226-2').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"  validation="true" />
+  </container>
+
+  <container csv-filename="Histology-${TIMESTAMP}.csv">
+    <attribute csv-column="Histology-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').id" anonym="His" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').focus.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Histologie Datum" val-fhir-path="Observation.where(code.coding.code = '59847-4').effective.value"/>
+    <attribute csv-column="ICD-O Katalog Morphologie (Version)" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.version.value" />
+    <attribute csv-column="Morphologie" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.code.value"/>
+    <attribute csv-column="Morphologie-Freitext" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.text.value"/>
+    <attribute csv-column="Grading" val-fhir-path="Observation.where(code.coding.code = '59542-1').value.coding.code.value" join-fhir-path="Observation.where(code.coding.code = '59847-4').hasMember.reference.value"/>
+
+    <attribute csv-column="Histologie Datum-Validation" val-fhir-path="Observation.where(code.coding.code = '59847-4').effective.value" validation="true" />
+    <!--<attribute csv-column="ICD-O Katalog Morphologie (Version)-Validation" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.version.value"  validation="true" />-->
+    <attribute csv-column="Morphologie-Validation" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.code.value" validation="true" />
+    <attribute csv-column="Morphologie-Freitext-Validation" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.text.value" validation="true" />
+    <attribute csv-column="Grading-Validation" val-fhir-path="Observation.where(code.coding.code = '59542-1').value.coding.code.value" join-fhir-path="Observation.where(code.coding.code = '59847-4').hasMember.reference.value" validation="true" />
+  </container>
+
+
+  <container csv-filename="Metastasis-${TIMESTAMP}.csv">
+    <attribute csv-column="Metastasis-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').id" anonym="Met" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').focus.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Datum Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = '21907-1').effective.value"/>
+    <attribute csv-column="Fernmetastasen vorhanden" val-fhir-path="Observation.where(code.coding.code = '21907-1').value.coding.code.value"/>
+    <attribute csv-column="Lokalisation Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = '21907-1').bodySite.coding.code.value"/>
+
+    <attribute csv-column="Datum Fernmetastasen-Validation" val-fhir-path="Observation.where(code.coding.code = '21907-1').effective.value" validation="true" />
+    <attribute csv-column="Fernmetastasen vorhanden-Validation" val-fhir-path="Observation.where(code.coding.code = '21907-1').value.coding.code.value" validation="true" />
+    <attribute csv-column="Lokalisation Fernmetastasen-Validation" val-fhir-path="Observation.where(code.coding.code = '21907-1').bodySite.coding.code.value" validation="true" />
+  </container>
+
+  <container csv-filename="TNM-${TIMESTAMP}.csv">
+    <attribute csv-column="TNM-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').id" anonym="TNM" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').focus.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Datum der TNM Dokumentation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').effective.value"/>
+    <attribute csv-column="UICC Stadium" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.code.value"/>
+    <attribute csv-column="TNM-T" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').value.coding.code.value"/>
+    <attribute csv-column="TNM-N" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').value.coding.code.value"/>
+    <attribute csv-column="TNM-M" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').value.coding.code.value"/>
+    <attribute csv-column="c/p/u-Präfix T" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute csv-column="c/p/u-Präfix N" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute csv-column="c/p/u-Präfix M" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute csv-column="TNM-y-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '59479-6' or code.coding.code = '59479-6').value.coding.code.value"/>
+    <attribute csv-column="TNM-r-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21983-2' or code.coding.code = '21983-2').value.coding.code.value"/>
+    <attribute csv-column="TNM-m-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '42030-7' or code.coding.code = '42030-7').value.coding.code.value"/>
+    <!--nur bei UICC, nicht in ADT2FHIR--><attribute csv-column="TNM-Version" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.version.value"/>
+
+    <attribute csv-column="Datum der TNM Dokumentation-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').effective.value" validation="true" />
+    <attribute csv-column="UICC Stadium-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-T-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-N-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-M-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').value.coding.code.value" validation="true" />
+    <attribute csv-column="c/p/u-Präfix T-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value" validation="true" />
+    <attribute csv-column="c/p/u-Präfix N-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value" validation="true" />
+    <attribute csv-column="c/p/u-Präfix M-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-y-Symbol-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '59479-6' or code.coding.code = '59479-6').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-r-Symbol-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21983-2' or code.coding.code = '21983-2').value.coding.code.value" validation="true" />
+    <attribute csv-column="TNM-m-Symbol-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '42030-7' or code.coding.code = '42030-7').value.coding.code.value" validation="true" />
+    <!--<attribute csv-column="TNM-Version-Validation" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.version.value" validation="true" />-->
+  </container>
+
+
+  <container csv-filename="System-Therapy-${TIMESTAMP}.csv">
+    <attribute csv-column="System-Therapy-ID" val-fhir-path="MedicationStatement.id" anonym="Sys" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="MedicationStatement.reasonReference.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="MedicationStatement.subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Systemische Therapie Stellung zu operativer Therapie" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value"/>
+    <attribute csv-column="Intention Chemotherapie" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value"/>
+    <attribute csv-column="Therapieart" val-fhir-path="MedicationStatement.category.coding.code.value"/>
+    <attribute csv-column="Systemische Therapie Beginn" val-fhir-path="MedicationStatement.effective.start.value"/>
+    <attribute csv-column="Systemische Therapie Ende" val-fhir-path="MedicationStatement.effective.end.value"/>
+    <attribute csv-column="Systemische Therapie Protokoll" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SystemischeTherapieProtokoll').value.text.value"/>
+    <attribute csv-column="Systemische Therapie Substanzen" val-fhir-path="MedicationStatement.medication.text.value"/>
+    <attribute csv-column="Chemotherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'CH').exists().value" />
+    <attribute csv-column="Hormontherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'HO').exists().value" />
+    <attribute csv-column="Immuntherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'IM').exists().value" />
+    <attribute csv-column="Knochenmarktransplantation" val-fhir-path="MedicationStatement.where(category.coding.code = 'KM').exists().value" />
+    <attribute csv-column="Abwartende Strategie" val-fhir-path="MedicationStatement.where(category.coding.code = 'WS').exists().value" />
+
+    <attribute csv-column="Systemische Therapie Stellung zu operativer Therapie-Validation" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value" validation="true" />
+    <attribute csv-column="Intention Chemotherapie-Validation" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value" validation="true" />
+    <attribute csv-column="Therapieart-Validation" val-fhir-path="MedicationStatement.category.coding.code.value" validation="true" />
+    <attribute csv-column="Systemische Therapie Beginn-Validation" val-fhir-path="MedicationStatement.effective.start.value" validation="true" />
+    <attribute csv-column="Systemische Therapie Ende-Validation" val-fhir-path="MedicationStatement.effective.end.value" validation="true" />
+    <attribute csv-column="Systemische Therapie Protokoll-Validation" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SystemischeTherapieProtokoll').value.text.value" validation="true" />
+    <attribute csv-column="Systemische Therapie Substanzen-Validation" val-fhir-path="MedicationStatement.medication.text.value" validation="true" />
+    <!--<attribute csv-column="Chemotherapie-Validation" val-fhir-path="MedicationStatement.where(category.coding.code = 'CH').exists().value"  validation="true" />-->
+    <!--<attribute csv-column="Hormontherapie-Validation" val-fhir-path="MedicationStatement.where(category.coding.code = 'HO').exists().value"  validation="true" />-->
+    <!--<attribute csv-column="Immuntherapie-Validation" val-fhir-path="MedicationStatement.where(category.coding.code = 'IM').exists().value"  validation="true" />-->
+    <!--<attribute csv-column="Knochenmarktransplantation-Validation" val-fhir-path="MedicationStatement.where(category.coding.code = 'KM').exists().value"  validation="true" />-->
+    <!--<attribute csv-column="Abwartende Strategie-Validation" val-fhir-path="MedicationStatement.where(category.coding.code = 'WS').exists().value"  validation="true" />-->
+  </container>
+
+
+  <container csv-filename="Surgery-${TIMESTAMP}.csv">
+    <attribute csv-column="Surgery-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').id" anonym="Sur" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').reasonReference.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="OP" val-fhir-path="Procedure.where(category.coding.code = 'OP').exists().value"/>
+    <attribute csv-column="OPS-Code" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.code.value"/>
+    <attribute csv-column="OPS-Version" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.version.value"/>
+    <attribute csv-column="Datum der OP" val-fhir-path="Procedure.where(category.coding.code = 'OP').performed.value"/>
+    <attribute csv-column="Intention OP" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-OPIntention').value.coding.code.value"/>
+    <attribute csv-column="Lokale Beurteilung Resttumor" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/LokaleBeurteilungResidualstatusCS').code.value" />
+    <attribute csv-column="Gesamtbeurteilung Resttumor" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/GesamtbeurteilungResidualstatusCS').code.value"  />
+
+    <attribute csv-column="OP-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').exists().value" validation="true"/>
+    <attribute csv-column="OPS-Version-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.version.value" validation="true"/>
+    <attribute csv-column="OPS-Code-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.code.value" validation="true" />
+    <attribute csv-column="Datum der OP-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').performed.value" validation="true" />
+    <attribute csv-column="Intention OP-Validation" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-OPIntention').value.coding.code.value" validation="true" />
+    <attribute csv-column="Lokale Beurteilung Resttumor-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/LokaleBeurteilungResidualstatusCS').code.value"  validation="true" />
+    <attribute csv-column="Gesamtbeurteilung Resttumor-Validation" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/GesamtbeurteilungResidualstatusCS').code.value"   validation="true" />
+  </container>
+
+
+  <container csv-filename="Radiation-Therapy-${TIMESTAMP}.csv">
+    <attribute csv-column="Radiation-Therapy-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').id" anonym="Rad" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').reasonReference.reference.value" anonym="Dia"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Strahlentherapie" val-fhir-path="Procedure.where(category.coding.code = 'ST').exists().value"/>
+    <attribute csv-column="Strahlentherapie Stellung zu operativer Therapie" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value"/>
+    <attribute csv-column="Intention Strahlentherapie" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value" />
+    <attribute csv-column="Strahlentherapie Beginn" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.start.value"/>
+    <attribute csv-column="Strahlentherapie Ende" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.end.value"/>
+
+    <attribute csv-column="Strahlentherapie Stellung zu operativer Therapie-Validation" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value" validation="true" />
+    <attribute csv-column="Intention Strahlentherapie-Validation" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value"  validation="true" />
+    <attribute csv-column="Strahlentherapie Beginn-Validation" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.start.value" validation="true" />
+    <attribute csv-column="Strahlentherapie Ende-Validation" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.end.value" validation="true" />
+  </container>
+
+  <container csv-filename="Molecular-Marker-${TIMESTAMP}.csv">
+    <attribute csv-column="Mol-Marker-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').id" anonym="Mol" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').focus.reference.value" anonym="Dia" />
+    <attribute csv-column="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Marker Datum" val-fhir-path="Observation.where(code.coding.code = '69548-6').effective.value"/>
+    <attribute csv-column="Marker Name" val-fhir-path="Observation.where(code.coding.code = '69548-6').component.value.coding.code.value"/>
+    <attribute csv-column="Marker Status" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.coding.code.value" />
+    <attribute csv-column="Zusätzliche Alternative Dokumentation" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.text.value"/>
+
+    <attribute csv-column="Marker Datum-Validation" val-fhir-path="Observation.where(code.coding.code = '69548-6').effective.value" validation="true" />
+    <attribute csv-column="Marker Name-Validation" val-fhir-path="Observation.where(code.coding.code = '69548-6').component.value.coding.code.value" validation="true" />
+    <attribute csv-column="Marker Status-Validation" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.coding.code.value"  validation="true" />
+    <attribute csv-column="Zusätzliche Alternative Dokumentation-Validation" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.text.value" validation="true" />
+  </container>
+
+
+  <container csv-filename="Sample-${TIMESTAMP}.csv">
+    <attribute csv-column="Sample-ID" val-fhir-path="Specimen.id" anonym="Sam" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="Patient-ID" val-fhir-path="Specimen.subject.reference.value" anonym="Pat" />
+    <attribute csv-column="Entnahmedatum" val-fhir-path="Specimen.collection.collectedDateTime.value"/>
+    <attribute csv-column="Probentyp" val-fhir-path="Specimen.type.coding.code.value"/>
+    <attribute csv-column="Status Probe" val-fhir-path="Specimen.status.code.value"/>
+    <attribute csv-column="Probe-Projektbezeichnung" val-fhir-path="Specimen.identifier.system.value"/>
+    <!-- @TODO: it is still necessary to clarify whether it would not be better to take the quantity of collection.quantity -->
+    <attribute csv-column="Probenmenge" val-fhir-path="Specimen.container.specimenQuantity.value.value"/>
+    <attribute csv-column="Probenmenge Einheit" val-fhir-path="Specimen.container.specimenQuantity.unit.value"/>
+    <attribute csv-column="Aliquot" val-fhir-path="Specimen.parent.reference.exists().value" />
+
+    <attribute csv-column="Entnahmedatum-Validation" val-fhir-path="Specimen.collection.collectedDateTime.value" validation="true" />
+    <attribute csv-column="Probentyp-Validation" val-fhir-path="Specimen.type.coding.code.value" validation="true" />
+    <attribute csv-column="Status Probe-Validation" val-fhir-path="Specimen.status.code.value" validation="true" />
+    <attribute csv-column="Probe-Projektbezeichnung-Validation" val-fhir-path="Specimen.identifier.system.value" validation="true" />
+    <attribute csv-column="Probenmenge-Validation" val-fhir-path="Specimen.container.specimenQuantity.value.value" validation="true" />
+    <attribute csv-column="Probenmenge Einheit-Validation" val-fhir-path="Specimen.container.specimenQuantity.unit.value" validation="true" />
+    <!--<attribute csv-column="Aliquot-Validation" val-fhir-path="Specimen.parent.reference.exists().value"  validation="true" />-->
+  </container>
+
+  <cql>
+    <default-fhir-search-query>Patient</default-fhir-search-query>
+    <token key="DKTK_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:" />
+    <measure-parameters>
+      {
+      "resourceType": "Parameters",
+      "parameter": [
+      {
+      "name": "periodStart",
+      "valueDate": "2000"
+      },
+      {
+      "name": "periodEnd",
+      "valueDate": "2030"
+      },
+      {
+      "name": "reportType",
+      "valueCode": "subject-list"
+      }
+      ]
+      }
+    </measure-parameters>
+  </cql>
+
+
+
+  <fhir-rev-include>Observation:patient</fhir-rev-include>
+  <fhir-rev-include>Condition:patient</fhir-rev-include>
+  <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include>
+  <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>
+  <fhir-rev-include>Procedure:patient</fhir-rev-include>
+  <fhir-rev-include>Specimen:patient</fhir-rev-include>
+
+  <!--<fhir-package>https://simplifier.net/packages/de.basisprofil.r4/1.4.0/$download</fhir-package>-->
+  <fhir-package>de.basisprofil.r4-1.4.0.tgz</fhir-package>
+  <fhir-package>de.dktk.oncology-1.3.0.tgz</fhir-package>
+  <fhir-package>hl7.fhir.core-4.0.1.tgz</fhir-package>
+  <fhir-package>hl7.fhir.r4.core-4.0.1.tgz</fhir-package>
+  <fhir-package>de.bbmri.fhir-1.1.0.tgz</fhir-package>
+  <fhir-package>hl7.fhir.uv.ips-1.0.0.tgz</fhir-package>
+
+<!--  <fhir-terminology-server>http://tx.fhir.org/r4</fhir-terminology-server>-->
+
+</template>

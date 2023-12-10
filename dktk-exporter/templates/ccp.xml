@@ -1,0 +1,183 @@
+<template id="ccp" excel-filename="Export-${TIMESTAMP}.xlsx" source-id="blaze-store" >
+
+  <container id="Patient" csv-filename="Patient-${TIMESTAMP}.csv" excel-sheet="Patient" xml-filename="Patient-${TIMESTAMP}.xml" xml-root-element="Patients" xml-element="Patient" json-filename="Patient-${TIMESTAMP}.json" json-key="Patients" >
+    <attribute id="Patient-ID" default-name="Patient-ID" val-fhir-path="Patient.id.value" anonym="Pat" op="EXTRACT_RELATIVE_ID"/>
+    <attribute default-name="DKTK-ID-Global" val-fhir-path="Patient.identifier.where(type.coding.code = 'Global').value.value"/>
+    <attribute default-name="DKTK-ID-Lokal" val-fhir-path="Patient.identifier.where(type.coding.code = 'Lokal').value.value" />
+    <attribute default-name="Geburtsdatum" val-fhir-path="Patient.birthDate.value"/>
+    <attribute default-name="Geschlecht" val-fhir-path="Patient.gender.value" />
+    <attribute default-name="Datum des letztbekannten Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').effective.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <attribute default-name="Vitalstatus" val-fhir-path="Observation.where(code.coding.code = '75186-7').value.coding.code.value" join-fhir-path="/Observation.where(code.coding.code = '75186-7').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute default-name="Tod tumorbedingt" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+    <!--fehlt in ADT2FHIR--><attribute default-name="Todesursachen" val-fhir-path="Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/JNUCS').code.value" join-fhir-path="/Observation.where(code.coding.code = '68343-3').subject.reference.value"/>
+  </container>
+
+  <container id="Diagnosis" csv-filename="Diagnosis-${TIMESTAMP}.csv" excel-sheet="Diagnosis" xml-filename="Diagnosis-${TIMESTAMP}.xml" xml-root-element="Diagnoses" xml-element="Diagnosis" json-filename="Diagnosis-${TIMESTAMP}.json" json-key="Diagnoses">
+    <attribute id="Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Condition.id.value" anonym="Dia" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Condition.subject.reference.value" anonym="Pat"/>
+    <attribute default-name="Primärdiagnose" val-fhir-path="Condition.code.coding.code.value"/>
+    <attribute default-name="Tumor Diagnosedatum" val-fhir-path="Condition.onset.value"/>
+    <attribute default-name="Primaertumor Diagnosetext" val-fhir-path="Condition.code.text.value"/>
+    <attribute default-name="Version des ICD-10-Katalogs" val-fhir-path="Condition.code.coding.version.value"/>
+    <attribute default-name="Lokalisation" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').code.value"/>
+    <attribute default-name="ICD-O Katalog Topographie (Version)" val-fhir-path="Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').version.value"/>
+    <attribute default-name="Seitenlokalisation nach ADT-GEKID" val-fhir-path="Condition.bodySite.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS').code.value"/>
+  </container>
+
+  <container id="Progress" csv-filename="Progress-${TIMESTAMP}.csv" excel-sheet="Progress" xml-filename="Progress-${TIMESTAMP}.xml" xml-root-element="Progress" xml-element="Progress" json-filename="Progress-${TIMESTAMP}.json" json-key="Progress">
+<!--it would be better to generate a an ID, instead of extracting the ClinicalImpression id-->
+    <attribute id="Progress-ID" default-name="Progress-ID" val-fhir-path="ClinicalImpression.id.value" anonym="Pro" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="ClinicalImpression.problem.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="ClinicalImpression.subject.reference.value" anonym="Pat" />
+    <attribute default-name="Untersuchungs-, Befunddatum im Verlauf" val-fhir-path="ClinicalImpression.effective.value" />
+    <!-- just for evaluation: redundant to Untersuchungs-, Befunddatum im Verlauf-->
+    <attribute default-name="Datum lokales oder regionäres Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').effective.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+    <attribute default-name="Gesamtbeurteilung Tumorstatus" val-fhir-path="Observation.where(code.coding.code = '21976-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"/>
+    <attribute default-name="Lokales oder regionäres Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4583-6').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value"/>
+    <attribute default-name="Lymphknoten-Rezidiv" val-fhir-path="Observation.where(code.coding.code = 'LA4370-8').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+    <attribute default-name="Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = 'LA4226-2').value.coding.code.value" join-fhir-path="ClinicalImpression.finding.itemReference.reference.value" />
+  </container>
+
+  <container id="Histology" csv-filename="Histology-${TIMESTAMP}.csv" excel-sheet="Histology" xml-filename="Histology-${TIMESTAMP}.xml" xml-root-element="Histologies" xml-element="Histology" json-filename="Histology-${TIMESTAMP}.json" json-key="Histologies" >
+    <attribute id="Histology-ID" default-name="Histology-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').id" anonym="His" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').focus.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '59847-4').subject.reference.value" anonym="Pat" />
+    <attribute default-name="Histologie Datum" val-fhir-path="Observation.where(code.coding.code = '59847-4').effective.value"/>
+    <attribute default-name="ICD-O Katalog Morphologie (Version)" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.version.value" />
+    <attribute default-name="Morphologie" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.coding.code.value"/>
+    <attribute default-name="Morphologie-Freitext" val-fhir-path="Observation.where(code.coding.code = '59847-4').value.text.value"/>
+    <attribute default-name="Grading" val-fhir-path="Observation.where(code.coding.code = '59542-1').value.coding.code.value" join-fhir-path="Observation.where(code.coding.code = '59847-4').hasMember.reference.value"/>
+  </container>
+
+
+  <container id="Metastatis" csv-filename="Metastasis-${TIMESTAMP}.csv" excel-sheet="Metastasis" xml-filename="Metastasis-${TIMESTAMP}.xml" xml-root-element="Metastases" xml-element="Metastasis" json-filename="Metastasis-${TIMESTAMP}.json" json-key="Metastases" >
+    <attribute id="Metastasis-ID" default-name="Metastatsis-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').id" anonym="Met" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').focus.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '21907-1').subject.reference.value" anonym="Pat" />
+    <attribute default-name="Datum Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = '21907-1').effective.value"/>
+    <attribute default-name="Fernmetastasen vorhanden" val-fhir-path="Observation.where(code.coding.code = '21907-1').value.coding.code.value"/>
+    <attribute default-name="Lokalisation Fernmetastasen" val-fhir-path="Observation.where(code.coding.code = '21907-1').bodySite.coding.code.value"/>
+  </container>
+
+  <container id="TNM" csv-filename="TNM-${TIMESTAMP}.csv" excel-sheet="TNM" xml-filename="TNM-${TIMESTAMP}.xml" xml-root-element="TNMs" xml-element="TNM" json-filename="TNM-${TIMESTAMP}.json" json-key="TNMs">
+    <attribute id="TNM-ID" default-name="TNM-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').id" anonym="TNM" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').focus.reference.value" anonym="Dia"/>
+    <attribute id="Patient" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').subject.reference.value" anonym="Pat" />
+    <attribute default-name="Datum der TNM-Dokumentation/Datum Befund" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').effective.value"/>
+    <attribute default-name="UICC Stadium" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.code.value"/>
+    <attribute default-name="TNM-T" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').value.coding.code.value"/>
+    <attribute default-name="TNM-N" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').value.coding.code.value"/>
+    <attribute default-name="TNM-M" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').value.coding.code.value"/>
+    <attribute default-name="c/p/u-Präfix T" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21905-5' or code.coding.code = '21899-0').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute default-name="c/p/u-Präfix N" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21906-3' or code.coding.code = '21900-6').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute default-name="c/p/u-Präfix M" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21907-1' or code.coding.code = '21901-4').extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-TNMcpuPraefix').value.coding.code.value"/>
+    <attribute default-name="TNM-y-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '59479-6' or code.coding.code = '59479-6').value.coding.code.value"/>
+    <attribute default-name="TNM-r-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '21983-2' or code.coding.code = '21983-2').value.coding.code.value"/>
+    <attribute default-name="TNM-m-Symbol" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').component.where(code.coding.code = '42030-7' or code.coding.code = '42030-7').value.coding.code.value"/>
+    <!--nur bei UICC, nicht in ADT2FHIR--><attribute default-name="TNM-Version" val-fhir-path="Observation.where(code.coding.code = '21908-9' or code.coding.code = '21902-2').value.coding.version.value"/>
+  </container>
+
+
+  <container id="System-Therapy" csv-filename="System-Therapy-${TIMESTAMP}.csv" excel-sheet="System Therapy" xml-filename="System-Therapy-${TIMESTAMP}.xml" xml-root-element="System-Therapies" xml-element="System-Therapy" json-filename="System-Therapy-${TIMESTAMP}.json" json-key="System Therapies">
+    <attribute id="System-Therapy-ID" default-name="System-Therapy-ID" val-fhir-path="MedicationStatement.id" anonym="Sys" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="MedicationStatement.reasonReference.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="MedicationStatement.subject.reference.value" anonym="Pat" />
+    <attribute default-name="Systemische Therapie Stellung zu operativer Therapie" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value"/>
+    <attribute default-name="Intention Chemotherapie" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value"/>
+    <attribute default-name="Therapieart" val-fhir-path="MedicationStatement.category.coding.code.value"/>
+    <attribute default-name="Systemische Therapie Beginn" val-fhir-path="MedicationStatement.effective.start.value"/>
+    <attribute default-name="Systemische Therapie Ende" val-fhir-path="MedicationStatement.effective.end.value"/>
+    <attribute default-name="Systemische Therapie Protokoll" val-fhir-path="MedicationStatement.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SystemischeTherapieProtokoll').value.text.value"/>
+    <attribute default-name="Systemische Therapie Substanzen" val-fhir-path="MedicationStatement.medication.text.value"/>
+    <attribute default-name="Chemotherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'CH').exists().value" />
+    <attribute default-name="Hormontherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'HO').exists().value" />
+    <attribute default-name="Immuntherapie" val-fhir-path="MedicationStatement.where(category.coding.code = 'IM').exists().value" />
+    <attribute default-name="Knochenmarktransplantation" val-fhir-path="MedicationStatement.where(category.coding.code = 'KM').exists().value" />
+    <attribute default-name="Abwartende Strategie" val-fhir-path="MedicationStatement.where(category.coding.code = 'WS').exists().value" />
+  </container>
+
+
+  <container id="Surgery" csv-filename="Surgery-${TIMESTAMP}.csv" excel-sheet="Surgery" xml-filename="Surgery-${TIMESTAMP}.xml" xml-root-element="Surgeries" xml-element="Surgery" json-filename="Surgery-${TIMESTAMP}.json" json-key="Surgeries" >
+    <attribute id="Surgery-ID" default-name="Surgery-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').id" anonym="Sur" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').reasonReference.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Procedure.where(category.coding.code = 'OP').subject.reference.value" anonym="Pat" />
+    <attribute default-name="OP" val-fhir-path="Procedure.where(category.coding.code = 'OP').exists().value"/>
+    <attribute default-name="OPS-Code" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.code.value"/>
+    <attribute default-name="OPS-Version" val-fhir-path="Procedure.where(category.coding.code = 'OP').code.coding.version.value"/>
+    <attribute default-name="Datum der OP" val-fhir-path="Procedure.where(category.coding.code = 'OP').performed.value"/>
+    <attribute default-name="Intention OP" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-OPIntention').value.coding.code.value"/>
+    <attribute default-name="Lokale Beurteilung Resttumor" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/LokaleBeurteilungResidualstatusCS').code.value" />
+    <attribute default-name="Gesamtbeurteilung Resttumor" val-fhir-path="Procedure.where(category.coding.code = 'OP').outcome.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/GesamtbeurteilungResidualstatusCS').code.value"  />
+  </container>
+
+
+  <container id="Radiation-Therapy" csv-filename="Radiation-Therapy-${TIMESTAMP}.csv" excel-sheet="Radiation Therapy" xml-filename="Radiation-Therapy-${TIMESTAMP}.xml" xml-root-element="Radiation-Therapies" xml-element="Radiation-Therapy" json-filename="Radiation-Therapy-${TIMESTAMP}.json" json-key="Radiation Therapies">
+    <attribute id="Radiation-Therapy-ID" default-name="Radiation-Therapy-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').id" anonym="Rad" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').reasonReference.reference.value" anonym="Dia"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Procedure.where(category.coding.code = 'ST').subject.reference.value" anonym="Pat" />
+    <attribute default-name="Strahlentherapie" val-fhir-path="Procedure.where(category.coding.code = 'ST').exists().value"/>
+    <attribute default-name="Strahlentherapie Stellung zu operativer Therapie" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-StellungZurOp').value.coding.code.value"/>
+    <attribute default-name="Intention Strahlentherapie" val-fhir-path="Procedure.extension('http://dktk.dkfz.de/fhir/StructureDefinition/onco-core-Extension-SYSTIntention').value.coding.code.value" />
+    <attribute default-name="Strahlentherapie Beginn" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.start.value"/>
+    <attribute default-name="Strahlentherapie Ende" val-fhir-path="Procedure.where(category.coding.code = 'ST').performed.end.value"/>
+  </container>
+
+  <container id="Molecular-Marker" csv-filename="Molecular-Marker-${TIMESTAMP}.csv" excel-sheet="Molecular Marker" xml-filename="Molecular-Marker-${TIMESTAMP}.xml" xml-root-element="Molecular-Markers" xml-element="Molecular-Marker" json-filename="Molecular-Marker-${TIMESTAMP}.json" json-key="Molecular Markers">
+    <attribute id="Mol-Marker-ID" default-name="Mol-Marker-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').id" anonym="Mol" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Diagnosis-ID" link="Diagnosis.Diagnosis-ID" default-name="Diagnosis-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').focus.reference.value" anonym="Dia" />
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Observation.where(code.coding.code = '69548-6').subject.reference.value" anonym="Pat" />
+    <attribute default-name="Datum der Datenerhebung" val-fhir-path="Observation.where(code.coding.code = '69548-6').effective.value"/>
+    <attribute default-name="Marker" val-fhir-path="Observation.where(code.coding.code = '69548-6').component.value.coding.code.value"/>
+    <attribute default-name="Status des molekularen Markers" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.coding.code.value" />
+    <attribute default-name="Zusätzliche Alternative Dokumentation" val-fhir-path="Observation.where(code.coding.code = '69548-6').value.text.value"/>
+  </container>
+
+
+  <container id="Sample" csv-filename="Sample-${TIMESTAMP}.csv" excel-sheet="Sample" xml-filename="Sample-${TIMESTAMP}.xml" xml-root-element="Samples" xml-element="Sample" json-filename="Sample-${TIMESTAMP}.json" json-key="Samples">
+    <attribute id="Sample-ID" default-name="Sample-ID" val-fhir-path="Specimen.id" anonym="Sam" op="EXTRACT_RELATIVE_ID"/>
+    <attribute id="Patient-ID" link="Patient.Patient-ID" default-name="Patient-ID" val-fhir-path="Specimen.subject.reference.value" anonym="Pat" />
+    <attribute default-name="Entnahmedatum" val-fhir-path="Specimen.collection.collectedDateTime.value"/>
+    <attribute default-name="Probenart" val-fhir-path="Specimen.type.coding.code.value"/>
+    <attribute default-name="Status" val-fhir-path="Specimen.status.code.value"/>
+    <attribute default-name="Projekt" val-fhir-path="Specimen.identifier.system.value"/>
+   <!-- @TODO: it is still necessary to clarify whether it would not be better to take the quantity of collection.quantity -->
+    <attribute default-name="Menge" val-fhir-path="Specimen.container.specimenQuantity.value.value"/>
+    <attribute default-name="Probenmenge Einheit" val-fhir-path="Specimen.container.specimenQuantity.unit.value"/>
+    <attribute default-name="Aliquot" val-fhir-path="Specimen.parent.reference.exists().value" />
+  </container>
+
+  <cql>
+    <default-fhir-search-query>Patient</default-fhir-search-query>
+    <token key="DKTK_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:" />
+    <measure-parameters>
+      {
+      "resourceType": "Parameters",
+      "parameter": [
+      {
+      "name": "periodStart",
+      "valueDate": "2000"
+      },
+      {
+      "name": "periodEnd",
+      "valueDate": "2030"
+      },
+      {
+      "name": "reportType",
+      "valueCode": "subject-list"
+      }
+      ]
+      }
+    </measure-parameters>
+  </cql>
+
+
+
+
+  <fhir-rev-include>Observation:patient</fhir-rev-include>
+  <fhir-rev-include>Condition:patient</fhir-rev-include>
+  <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include>
+  <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>
+  <fhir-rev-include>Procedure:patient</fhir-rev-include>
+  <fhir-rev-include>Specimen:patient</fhir-rev-include>
+
+</template>

@@ -1,0 +1,42 @@
+<template id="focus-bbmri" excel-filename="Focus-${TIMESTAMP}.xlsx" source-id="blaze-store" >
+
+    <!-- TODO -->
+    <container csv-filename="MeasureReport-${TIMESTAMP}.csv" excel-sheet="MeasureReport" xml-filename="MeasureReport-${TIMESTAMP}.xml" xml-root-element="MeasureReport" xml-element="MeasureReport" json-filename="MeasureReport-${TIMESTAMP}.json" json-key="MeasureReport" >
+        <attribute csv-column="Stratum-ID" xml-element="Stratum-ID" json-key="Stratum-ID" excel-column="Stratum-ID" val-fhir-path="MeasureReport.id.value" anonym="ST" op="EXTRACT_RELATIVE_ID" />
+        <attribute csv-column="Group" xml-element="Group" json-key="Group" excel-column="Group" val-fhir-path="MeasureReport.group.code.text.value"  />
+        <attribute csv-column="GroupCount" xml-element="GroupCount" json-key="GroupCount" excel-column="GroupCount" val-fhir-path="MeasureReport.group.population.count.value"  />
+        <attribute csv-column="Stratifier" xml-element="Stratifier" json-key="Stratifier" excel-column="Stratifier" val-fhir-path="MeasureReport.group.stratifier.code.text.value"  />
+        <attribute csv-column="StratifierValue" xml-element="StratifierValue" json-key="StratifierValue" excel-column="StratifierValue" val-fhir-path="MeasureReport.group.stratifier.stratum.value.text.value"  />
+        <attribute csv-column="StratifierCount" xml-element="StratifierCount" json-key="StratifierCount" excel-column="StratifierCount" val-fhir-path="MeasureReport.group.stratifier.stratum.population.count.value"  />
+    </container>
+
+    <cql>
+        <token key="BBMRI_STRAT_GENDER_STRATIFIER" value="define Gender: &#10; if (Patient.gender is null) then 'unknown' else Patient.gender" />
+        <token key="BBMRI_STRAT_SAMPLE_TYPE_STRATIFIER" value= "define function SampleType(specimen FHIR.Specimen):&#10;    case FHIRHelpers.ToCode(specimen.type.coding.where(system = 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType').first())&#10;        when Code 'plasma-edta' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'plasma-citrat' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'plasma-heparin' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'plasma-cell-free' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'plasma-other' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'plasma' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'tissue-formalin' from SampleMaterialType then 'tissue-ffpe' &#10;        when Code 'tumor-tissue-ffpe' from SampleMaterialType then 'tissue-ffpe' &#10;        when Code 'normal-tissue-ffpe' from SampleMaterialType then 'tissue-ffpe' &#10;        when Code 'other-tissue-ffpe' from SampleMaterialType then 'tissue-ffpe' &#10;        when Code 'tumor-tissue-frozen' from SampleMaterialType then 'tissue-frozen' &#10;        when Code 'normal-tissue-frozen' from SampleMaterialType then 'tissue-frozen' &#10;        when Code 'other-tissue-frozen' from SampleMaterialType then 'tissue-frozen' &#10;        when Code 'tissue-paxgene-or-else' from SampleMaterialType then 'tissue-other' &#10;        when Code 'derivative' from SampleMaterialType then 'derivative-other' &#10;        when Code 'liquid' from SampleMaterialType then 'liquid-other' &#10;        when Code 'tissue' from SampleMaterialType then 'tissue-other' &#10;        when Code 'serum' from SampleMaterialType then 'blood-serum' &#10;        when Code 'cf-dna' from SampleMaterialType then 'dna' &#10;        when Code 'g-dna' from SampleMaterialType then 'dna' &#10;        when Code 'blood-plasma' from SampleMaterialType then 'blood-plasma' &#10;        when Code 'tissue-ffpe' from SampleMaterialType then 'tissue-ffpe' &#10;        when Code 'tissue-frozen' from SampleMaterialType then 'tissue-frozen' &#10;        when Code 'tissue-other' from SampleMaterialType then 'tissue-other' &#10;        when Code 'derivative-other' from SampleMaterialType then 'derivative-other' &#10;        when Code 'liquid-other' from SampleMaterialType then 'liquid-other' &#10;        when Code 'blood-serum' from SampleMaterialType then 'blood-serum' &#10;        when Code 'dna' from SampleMaterialType then 'dna' &#10;        when Code 'buffy-coat' from SampleMaterialType then 'buffy-coat' &#10;        when Code 'urine' from SampleMaterialType then 'urine' &#10;        when Code 'ascites' from SampleMaterialType then 'ascites' &#10;        when Code 'saliva' from SampleMaterialType then 'saliva' &#10;        when Code 'csf-liquor' from SampleMaterialType then 'csf-liquor' &#10;        when Code 'bone-marrow' from SampleMaterialType then 'bone-marrow' &#10;        when Code 'peripheral-blood-cells-vital' from SampleMaterialType then 'peripheral-blood-cells-vital' &#10;        when Code 'stool-faeces' from SampleMaterialType then 'stool-faeces' &#10;        when Code 'rna' from SampleMaterialType then 'rna' &#10;        when Code 'whole-blood' from SampleMaterialType then 'whole-blood' &#10;        when Code 'swab' from SampleMaterialType then 'swab' &#10;        when Code 'dried-whole-blood' from SampleMaterialType then 'dried-whole-blood' &#10;        when null  then 'Unknown'&#10;        else 'Unknown'&#10;    end" />
+        <token key="BBMRI_STRAT_CUSTODIAN_STRATIFIER" value= "define Custodian:&#10; First(from Specimen.extension E&#10; where E.url = 'https://fhir.bbmri.de/StructureDefinition/Custodian'&#10; return (E.value as Reference).identifier.value)" />
+        <token key="BBMRI_STRAT_DIAGNOSIS_STRATIFIER" value= "define Diagnosis:&#10; if InInitialPopulation then [Condition] else {} as List&lt;Condition&gt; &#10; define function DiagnosisCode(condition FHIR.Condition, specimen FHIR.Specimen):&#10; Coalesce(condition.code.coding.where(system = 'http://hl7.org/fhir/sid/icd-10').code.first( /&gt; condition.code.coding.where(system = 'http://fhir.de/CodeSystem/dimdi/icd-10-gm').code.first( /&gt; specimen.extension.where(url='https://fhir.bbmri.de/StructureDefinition/SampleDiagnosis').value.coding.code.first( /&gt; condition.code.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.first())&#10;" />
+        <token key="BBMRI_STRAT_AGE_STRATIFIER" value= "define AgeClass:&#10;     (AgeInYears() div 10) * 10" />
+        <token key="BBMRI_STRAT_DEF_SPECIMEN" value= "define Specimen:" />
+        <token key="BBMRI_STRAT_DEF_IN_INITIAL_POPULATION" value= "define InInitialPopulation:" />
+
+        <measure-parameters>
+            {
+            "resourceType": "Parameters",
+            "parameter": [
+            {
+            "name": "periodStart",
+            "valueDate": "2000"
+            },
+            {
+            "name": "periodEnd",
+            "valueDate": "2030"
+            },
+            {
+            "name": "reportType",
+            "valueCode": "subject-list"
+            }
+            ]
+            }
+        </measure-parameters>
+    </cql>
+</template>
