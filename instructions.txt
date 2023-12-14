@@ -54,18 +54,27 @@ sudo apt-get install pkg-config
 
 //restart your VM
 
+Data from these repos are present here so you dont have to clone
+""""
+	Clone the repo
+git clone https://github.com/AdamRepasky/Feedback-tooling-setup.git
+
+
 	Clone beam
 git clone https://github.com/samply/beam.git
 
+	Clone feedback tools
+git clone https://github.com/AdamRepasky/feedback-agent.git
+git clone https://github.com/AdamRepasky/feedback-hub.git
+""""
 	run in terminal - if everything was installed successfully this should create a simple beam network
 ./dev/beamdev start
 
-
-	Clone bridgehead (teiler)
-git clone https://github.com/AdamRepasky/Feedback-tooling-setup.git
-
 	Build exporter image
 docker build -t dktk-exporter .
+
+in /teiler-docker
+
 docker-compose up -d login-db
 docker-compose up -d login
 docker-compose up -d teiler-[something] x 3
@@ -91,13 +100,9 @@ bbmri-fhir-gen patients -n 100
 blazectl --server http://localhost:8091/fhir upload patients
 
 
-	Clone feedback tools
-git clone https://github.com/AdamRepasky/feedback-agent.git
-git clone https://github.com/AdamRepasky/feedback-hub.git
-
 sudo apt install maven
 
-	Run this in both repos root directories
+	Run this in both feedback-agent and feedback-hub root directories
 mvn clean package -DskipTests
 copy the Dockerfile from /docker directory into the /target
 
