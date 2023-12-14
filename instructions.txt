@@ -1,0 +1,124 @@
+	Download & install (or just do it directly in Ubuntu without VM)
+	VMware Workstation 17.5.0 Player for Windows 64-bit Operating 	Systems
+https://www.vmware.com/products/workstation-player.html
+
+	Download Ubuntu Desktop iso
+https://ubuntu.com/download/desktop/thank-you?version=22.04.3&architecture=amd64
+
+	In VMware create new VM & select the iso & click through the installation
+
+	Install Java on VM
+sudo apt-cache search openjdk
+sudo apt install openjdk-17-jdk -y
+java -version
+
+	Install Docker:
+https://docs.docker.com/engine/install/ubuntu/
+-> run:
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+sudo usermod -aG docker $USER                  # to add myself to docker group
+sudo chgrp docker /usr/local/bin/docker-compose     # to give docker-compose to docker group,
+sudo chmod 750 /usr/local/bin/docker-compose   # to allow docker group users to execute it
+
+
+	Install:
+sudo apt install -y jq
+jq --version
+
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#source "$HOME/.cargo/env"
+#rustc --version
+sudo apt install cargo
+
+sudo apt install libssl-dev
+sudo apt-get install pkg-config
+
+//restart your VM
+
+	Clone beam
+git clone https://github.com/samply/beam.git
+
+	run in terminal - if everything was installed successfully this should create a simple beam network
+./dev/beamdev start
+
+
+	Clone bridgehead (teiler)
+git clone https://github.com/AdamRepasky/Feedback-tooling-setup.git
+
+	Build exporter image
+docker build -t dktk-exporter .
+docker-compose up -d login-db
+docker-compose up -d login
+docker-compose up -d teiler-[something] x 3
+docker-compose up -d exporter-db
+docker-compose up -d exporter
+docker-compose up -d blaze
+
+
+	Download blazectl
+sudo curl -LO https://github.com/samply/blazectl/releases/download/v0.13.0/blazectl-0.13.0-linux-amd64.tar.gz
+tar xzf blazectl-0.13.0-linux-amd64.tar.gz
+sudo mv ./blazectl /usr/local/bin/blazectl
+blazectl --version
+
+	Download software for sample data generation
+curl -LO https://github.com/samply/bbmri-fhir-gen/releases/download/v0.4.0/bbmri-fhir-gen-0.4.0-linux-amd64.tar.gz
+tar xzf bbmri-fhir-gen-0.4.0-linux-amd64.tar.gz
+sudo mv ./bbmri-fhir-gen /usr/local/bin/bbmri-fhir-gen
+bbmri-fhir-gen --version
+
+	Generate and upload data
+bbmri-fhir-gen patients -n 100
+blazectl --server http://localhost:8091/fhir upload patients
+
+
+	Clone feedback tools
+git clone https://github.com/AdamRepasky/feedback-agent.git
+git clone https://github.com/AdamRepasky/feedback-hub.git
+
+sudo apt install maven
+
+	Run this in both repos root directories
+mvn clean package -DskipTests
+copy the Dockerfile from /docker directory into the /target
+
+	Run
+docker-compose up -d feedback-agent-be feedback-agent-ui
+docker-compose up -d feedback-hub-be feedback-hub-ui
+
+It is important to check the IP addresses of feedback components in docker-compose.yml files and update as needed
+
+In case of networking problems, use "docker inspect teiler" & "docker inspect negotiator" to check IP adresses of components in those network and set them up accordingly in docker-compose.yml files of feedback-hub & feedback-agent. Also try "docker-compose down" before "docker-compose up" if you get errors like this: "ERROR: error while removing network: network teiler id ad358dc4456667a84fd851a2ed17d9a4302546583f3aca34bb931dbdb8af8f1e has active endpoints
+".
+feedback-hub-ui has its ".env" file containing IP of fb-hub which needs to be set accordingly
+
+For testing go to localhost:9000/en, click on the Feedback-agent app, and try creating query. If you want to test MeasureReports, first you need to simulate what is done in Blaze when using Sample Locator when searching for samples. You can do this by using Postman with Collection from this repo concretely calling the CQL-EvaluateMeasure endpoint which creates the MeasureReport in Blaze, in http://localhost:8091/fhir/MeasureReport you can see its ID which you can use. After selecting and successfuly saving the data you can go to http://localhost:8095/ - feedback-hub-ui and insert the doi string with requestID. After that you can check the updated database entries in feedback-agent's database using Postman or you can check the extended data directly in Blaze.
+
+few links to test:
+http://localhost:8091/fhir/MeasureReport
+http://localhost:8091/fhir/Specimen/bbmri-1-specimen-4
+http://localhost:8095/
+localhost:9000/en/
+
+In case of having problems you may check for installation updates on:
+https://github.com/AdamRepasky/Feedback-tooling-setup
+Or just contact me via mail 456209@mail.muni.cz
