@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "8f5e394a-79a6-459e-9a61-d090112fb5c6",
+		"name": "Feedback Hub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093131"
+	},
+	"item": [
+		{
+			"name": "Get All DOI Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8071/doi-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8071",
+					"path": [
+						"doi-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find DOI By Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8071/doi-token/25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8071",
+					"path": [
+						"doi-token",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find DOI By AccessCode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8071/doi-token/25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8071",
+					"path": [
+						"doi-token",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert DOI data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestID\" : \"req_3\",\r\n    \"publicationReference\": \"https://publications.com/xyz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8071/doi-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8071",
+					"path": [
+						"doi-data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

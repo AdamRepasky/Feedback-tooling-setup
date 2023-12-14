@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "d1da3f7e-555d-41fd-bcdc-a34e265beb4b",
+		"name": "Feedback Agent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093131"
+	},
+	"item": [
+		{
+			"name": "Get All Specimen Feedback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/specimen-feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"specimen-feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Specimen Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sampleID\" : \"p10s5\",\r\n    \"requestID\" : \"req_10\",\r\n    \"patientID\" : \"p10\",\r\n    \"type\" : \"blood cells\",\r\n    \"collectionDate\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8072/specimen-feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"specimen-feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Multiple Specimen Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"feedbackList\" : [\r\n        {\r\n            \"sampleID\" : \"bbmri-0-specimen-0\",\r\n            \"requestID\" : \"req_1\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"blood cells\",\r\n            \"collectionDate\" : \"\"\r\n        },\r\n        {\r\n            \"sampleID\" : \"bbmri-0-specimen-1\",\r\n            \"requestID\" : \"req_2\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"blood cells\",\r\n            \"collectionDate\" : \"\"\r\n        },\r\n        {\r\n            \"sampleID\" : \"bbmri-0-specimen-3\",\r\n            \"requestID\" : \"req_3\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"tissue\",\r\n            \"collectionDate\" : \"\"\r\n        },\r\n                {\r\n            \"sampleID\" : \"bbmri-1-specimen-0\",\r\n            \"requestID\" : \"req_4\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"blood cells\",\r\n            \"collectionDate\" : \"\"\r\n        },\r\n        {\r\n            \"sampleID\" : \"bbmri-1-specimen-1\",\r\n            \"requestID\" : \"req_5\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"blood cells\",\r\n            \"collectionDate\" : \"\"\r\n        },\r\n        {\r\n            \"sampleID\" : \"bbmri-2-specimen-0\",\r\n            \"requestID\" : \"req_6\",\r\n            \"patientID\" : \"p10\",\r\n            \"type\" : \"tissue\",\r\n            \"collectionDate\" : \"\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.201:8072/multiple-specimen-feedback",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"201"
+					],
+					"port": "8072",
+					"path": [
+						"multiple-specimen-feedback"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

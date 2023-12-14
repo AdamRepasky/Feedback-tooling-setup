@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "cffa20ff-65d9-43e0-9d6f-8faf0821e84c",
+		"name": "Proxy testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093131"
+	},
+	"item": [
+		{
+			"name": "Create task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy1.broker App1Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8\",\n  \"from\": \"app1.proxy1.broker\",\n  \"to\": [\n    \"app1.proxy2.broker\",\n    \"app2.proxy2.broker\"\n  ],\n  \"body\": \"Much work to do\",\n  \"failure_strategy\": {\n    \"retry\": {\n      \"backoff_millisecs\": 1000,\n      \"max_tries\": 5\n    }\n  },\n  \"ttl\": \"120s\",\n  \"metadata\": \"The broker can read and use this field e.g., to apply filters on behalf of an app\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim task by app1proxy2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy2.broker App1Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"metadata\":null,\n   \"task\":\"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8\",\n   \"from\":\"app1.proxy2.broker\",\n   \"to\":[\n      \"app1.proxy1.broker\"\n   ],\n   \"status\":\"claimed\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks/70c0aa90-bfcf-4312-a6af-42cbd57dc0b8/results/app1.proxy2.broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks",
+						"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8",
+						"results",
+						"app1.proxy2.broker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Succeed task by app1proxy2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy2.broker App1Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"metadata\":\"null\",\n   \"task\":\"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8\",\n   \"from\":\"app1.proxy2.broker\",\n   \"body\":\"result\",\n   \"to\":[\n      \"app1.proxy1.broker\"\n   ],\n   \"status\":\"succeeded\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks/70c0aa90-bfcf-4312-a6af-42cbd57dc0b8/results/app1.proxy2.broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks",
+						"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8",
+						"results",
+						"app1.proxy2.broker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Succeed task by app2proxy2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app2.proxy2.broker App1Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"metadata\":\"null\",\n   \"task\":\"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8\",\n   \"from\":\"app2.proxy2.broker\",\n   \"body\":\"result\",\n   \"to\":[\n      \"app1.proxy1.broker\"\n   ],\n   \"status\":\"succeeded\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks/70c0aa90-bfcf-4312-a6af-42cbd57dc0b8/results/app1.proxy2.broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks",
+						"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8",
+						"results",
+						"app1.proxy2.broker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task app1proxy2 filtered",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy2.broker App1Secret"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks?to=app1.proxy2.broker&wait_count=1&wait_time=20s&filter=todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "app1.proxy2.broker"
+						},
+						{
+							"key": "wait_count",
+							"value": "1"
+						},
+						{
+							"key": "wait_time",
+							"value": "20s"
+						},
+						{
+							"key": "filter",
+							"value": "todo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task app2proxy2 unfiltered",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app2.proxy2.broker App1Secret"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks?to=app2.proxy2.broker&wait_count=1&wait_time=20s",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "app2.proxy2.broker"
+						},
+						{
+							"key": "wait_count",
+							"value": "1"
+						},
+						{
+							"key": "wait_time",
+							"value": "20s"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task app1proxy2 unfiltered",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy2.broker App1Secret"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/v1/tasks?to=app1.proxy2.broker&wait_count=1&wait_time=20s",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "app1.proxy2.broker"
+						},
+						{
+							"key": "wait_count",
+							"value": "1"
+						},
+						{
+							"key": "wait_time",
+							"value": "20s"
+						},
+						{
+							"key": "filter",
+							"value": "todo",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get task app1proxy1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy1.broker App1Secret"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/v1/tasks?to=app1.proxy1.broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "app1.proxy1.broker"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get result",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy1.broker App1Secret"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/v1/tasks?to=app1.proxy1.broker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "app1.proxy1.broker"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create task debug",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey app1.proxy1.broker App1Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"70c0aa90-bfcf-4312-a6af-42cbd57dc0b8\",\n  \"from\": \"app1.proxy1.broker\",\n  \"to\": [\n    \"app1.proxy2.broker\"\n  ],\n  \"body\": \"Much work to do\",\n  \"failure_strategy\": {\n    \"retry\": {\n      \"backoff_millisecs\": 1000,\n      \"max_tries\": 5\n    }\n  },\n  \"ttl\": \"30s\",\n  \"metadata\": \"The broker can read and use this field e.g., to apply filters on behalf of an app\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

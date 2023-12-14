@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "85e76e89-59f9-4000-af51-8c03b9312a0d",
+		"name": "Exporter New",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093131"
+	},
+	"item": [
+		{
+			"name": "CQL - Evaluate Measure JSON - create measure report",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<request>\r\n <query>ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjJSbGMzbHpkR1Z0SUdsalpERXdPaUFuYUhSMGNEb3ZMMmhzTnk1dmNtY3ZabWhwY2k5emFXUXZhV05rTFRFd0p3b0tZMjlrWlhONWMzUmxiU0JUWVcxd2JHVk5ZWFJsY21saGJGUjVjR1U2SUNkb2RIUndjem92TDJab2FYSXVZbUp0Y21rdVpHVXZRMjlrWlZONWMzUmxiUzlUWVcxd2JHVk5ZWFJsY21saGJGUjVjR1VuQ2dvS1kyOXVkR1Y0ZENCUVlYUnBaVzUwQ2dwQ1FrMVNTVjlUVkZKQlZGOUJSMFZmVTFSU1FWUkpSa2xGVWdvS1FrSk5Va2xmVTFSU1FWUmZSMFZPUkVWU1gxTlVVa0ZVU1VaSlJWSUtDa0pDVFZKSlgxTlVVa0ZVWDBOVlUxUlBSRWxCVGw5VFZGSkJWRWxHU1VWU0NncENRazFTU1Y5VFZGSkJWRjlUUVUxUVRFVmZWRmxRUlY5VFZGSkJWRWxHU1VWU0NncENRazFTU1Y5VFZGSkJWRjlFUlVaZlUxQkZRMGxOUlU0S0lDQWdJR2xtSUVsdVNXNXBkR2xoYkZCdmNIVnNZWFJwYjI0Z2RHaGxiaUJiVTNCbFkybHRaVzVkSUdWc2MyVWdlMzBnWVhNZ1RHbHpkRHhUY0dWamFXMWxiajRLQ2dwQ1FrMVNTVjlUVkZKQlZGOUVTVUZIVGs5VFNWTmZVMVJTUVZSSlJrbEZVZ29LUWtKTlVrbGZVMVJTUVZSZlJFVkdYMGxPWDBsT1NWUkpRVXhmVUU5UVZVeEJWRWxQVGdvb1VHRjBhV1Z1ZEM1blpXNWtaWElnUFNBbmJXRnNaU2NwIgogICAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIkxpYnJhcnkiLAogICAgICAgICJzdGF0dXMiOiAiYWN0aXZlIiwKICAgICAgICAidHlwZSI6IHsKICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJsb2dpYy1saWJyYXJ5IiwKICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbGlicmFyeS10eXBlIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAidXJsIjogInVybjp1dWlkOmY1MjQwMjVlLWFjOGQtNDcyNS1iNjJlLWRjMThmZTAyMWE2MSIKICAgIH0sCiAgICAibWVhc3VyZSI6IHsKICAgICAgICAiZ3JvdXAiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICJ0ZXh0IjogInBhdGllbnRzIgogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICJwb3B1bGF0aW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiaW5pdGlhbC1wb3B1bGF0aW9uIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIkluSW5pdGlhbFBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsLWlkZW50aWZpZXIiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICAgInN0cmF0aWZpZXIiOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0ZXh0IjogIkFnZSIKICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiQWdlQ2xhc3MiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiR2VuZGVyIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJHZW5kZXIiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiQ3VzdG9kaWFuIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJDdXN0b2RpYW4iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAidGV4dCI6ICJzcGVjaW1lbiIKICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAiZXh0ZW5zaW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgInVybCI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NxZm1lYXN1cmVzL1N0cnVjdHVyZURlZmluaXRpb24vY3FmbS1wb3B1bGF0aW9uQmFzaXMiLAogICAgICAgICAgICAgICAgICAgICAgICAidmFsdWVDb2RlIjogIlNwZWNpbWVuIgogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAicG9wdWxhdGlvbiI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogImluaXRpYWwtcG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9tZWFzdXJlLXBvcHVsYXRpb24iCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJTcGVjaW1lbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAic3RyYXRpZmllciI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAic2FtcGxlX2tpbmQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIlNhbXBsZVR5cGUiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAidGV4dCI6ICJkaWFnbm9zaXMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgImV4dGVuc2lvbiI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwKICAgICAgICAgICAgICAgICAgICAgICAgInZhbHVlQ29kZSI6ICJDb25kaXRpb24iCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAgICJwb3B1bGF0aW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiaW5pdGlhbC1wb3B1bGF0aW9uIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIkRpYWdub3NpcyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAic3RyYXRpZmllciI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiZGlhZ25vc2lzIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJEaWFnbm9zaXNDb2RlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJsYW5ndWFnZSI6ICJ0ZXh0L2NxbC1pZGVudGlmaWVyIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAibGlicmFyeSI6ICJ1cm46dXVpZDpmNTI0MDI1ZS1hYzhkLTQ3MjUtYjYyZS1kYzE4ZmUwMjFhNjEiLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTWVhc3VyZSIsCiAgICAgICAgInNjb3JpbmciOiB7CiAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiY29ob3J0IiwKICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1zY29yaW5nIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAic3RhdHVzIjogImFjdGl2ZSIsCiAgICAgICAgInN1YmplY3RDb2RlYWJsZUNvbmNlcHQiOiB7CiAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiUGF0aWVudCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3Jlc291cmNlLXR5cGVzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAidXJsIjogInVybjp1dWlkOmE3NmRkOWViLTk5YzktNGE0NS1iYmIyLWU3YmJkYzM2NDdkMSIKICAgIH0KfQ==</query> <!-- Optional field -->\r\n</request> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/request?query-format=CQL&template-id=focus-bbmri&output-format=JSON&query-expiration-date=2025-10-21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query-format",
+							"value": "CQL"
+						},
+						{
+							"key": "template-id",
+							"value": "focus-bbmri"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						},
+						{
+							"key": "query-expiration-date",
+							"value": "2025-10-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get JSON - thesis testing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Specimen&query-format=FHIR_SEARCH&template-id=bbmri-feedback-agent&output-format=JSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Specimen"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "bbmri-feedback-agent"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MeasureReportSpecimens - get list id from measure report id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=MeasureReport?_id=DDCJ6UYDXP7GPYJG&query-format=FHIR_SEARCH&template-id=bbmri-measure-report-specimen&output-format=JSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "MeasureReport?_id=DDCJ6UYDXP7GPYJG"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "bbmri-measure-report-specimen"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

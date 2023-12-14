@@ -1,0 +1,1889 @@
+{
+	"info": {
+		"_postman_id": "85e76e89-59f9-4000-af51-8c03b9312a0d",
+		"name": "Exporter New",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14093131"
+	},
+	"item": [
+		{
+			"name": "Full CSV",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CQL - Evaluate Measure JSON",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<request>\r\n <query>ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjJSbGMzbHpkR1Z0SUdsalpERXdPaUFuYUhSMGNEb3ZMMmhzTnk1dmNtY3ZabWhwY2k5emFXUXZhV05rTFRFd0p3b0tZMjlrWlhONWMzUmxiU0JUWVcxd2JHVk5ZWFJsY21saGJGUjVjR1U2SUNkb2RIUndjem92TDJab2FYSXVZbUp0Y21rdVpHVXZRMjlrWlZONWMzUmxiUzlUWVcxd2JHVk5ZWFJsY21saGJGUjVjR1VuQ2dvS1kyOXVkR1Y0ZENCUVlYUnBaVzUwQ2dwQ1FrMVNTVjlUVkZKQlZGOUJSMFZmVTFSU1FWUkpSa2xGVWdvS1FrSk5Va2xmVTFSU1FWUmZSMFZPUkVWU1gxTlVVa0ZVU1VaSlJWSUtDa0pDVFZKSlgxTlVVa0ZVWDBOVlUxUlBSRWxCVGw5VFZGSkJWRWxHU1VWU0NncENRazFTU1Y5VFZGSkJWRjlUUVUxUVRFVmZWRmxRUlY5VFZGSkJWRWxHU1VWU0NncENRazFTU1Y5VFZGSkJWRjlFUlVaZlUxQkZRMGxOUlU0S0lDQWdJR2xtSUVsdVNXNXBkR2xoYkZCdmNIVnNZWFJwYjI0Z2RHaGxiaUJiVTNCbFkybHRaVzVkSUdWc2MyVWdlMzBnWVhNZ1RHbHpkRHhUY0dWamFXMWxiajRLQ2dwQ1FrMVNTVjlUVkZKQlZGOUVTVUZIVGs5VFNWTmZVMVJTUVZSSlJrbEZVZ29LUWtKTlVrbGZVMVJTUVZSZlJFVkdYMGxPWDBsT1NWUkpRVXhmVUU5UVZVeEJWRWxQVGdvb1VHRjBhV1Z1ZEM1blpXNWtaWElnUFNBbmJXRnNaU2NwIgogICAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIkxpYnJhcnkiLAogICAgICAgICJzdGF0dXMiOiAiYWN0aXZlIiwKICAgICAgICAidHlwZSI6IHsKICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJsb2dpYy1saWJyYXJ5IiwKICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbGlicmFyeS10eXBlIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAidXJsIjogInVybjp1dWlkOmY1MjQwMjVlLWFjOGQtNDcyNS1iNjJlLWRjMThmZTAyMWE2MSIKICAgIH0sCiAgICAibWVhc3VyZSI6IHsKICAgICAgICAiZ3JvdXAiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICJ0ZXh0IjogInBhdGllbnRzIgogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICJwb3B1bGF0aW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiaW5pdGlhbC1wb3B1bGF0aW9uIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIkluSW5pdGlhbFBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsLWlkZW50aWZpZXIiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICAgInN0cmF0aWZpZXIiOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0ZXh0IjogIkFnZSIKICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiQWdlQ2xhc3MiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiR2VuZGVyIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJHZW5kZXIiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiQ3VzdG9kaWFuIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJDdXN0b2RpYW4iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAidGV4dCI6ICJzcGVjaW1lbiIKICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAiZXh0ZW5zaW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgInVybCI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NxZm1lYXN1cmVzL1N0cnVjdHVyZURlZmluaXRpb24vY3FmbS1wb3B1bGF0aW9uQmFzaXMiLAogICAgICAgICAgICAgICAgICAgICAgICAidmFsdWVDb2RlIjogIlNwZWNpbWVuIgogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAicG9wdWxhdGlvbiI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogImluaXRpYWwtcG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9tZWFzdXJlLXBvcHVsYXRpb24iCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJTcGVjaW1lbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAic3RyYXRpZmllciI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAic2FtcGxlX2tpbmQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIlNhbXBsZVR5cGUiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImxhbmd1YWdlIjogInRleHQvY3FsIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAidGV4dCI6ICJkaWFnbm9zaXMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgImV4dGVuc2lvbiI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwKICAgICAgICAgICAgICAgICAgICAgICAgInZhbHVlQ29kZSI6ICJDb25kaXRpb24iCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXSwKICAgICAgICAgICAgICAgICJwb3B1bGF0aW9uIjogWwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiaW5pdGlhbC1wb3B1bGF0aW9uIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgICAgICJjcml0ZXJpYSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJleHByZXNzaW9uIjogIkRpYWdub3NpcyIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAic3RyYXRpZmllciI6IFsKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInRleHQiOiAiZGlhZ25vc2lzIgogICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICAgICAiY3JpdGVyaWEiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXhwcmVzc2lvbiI6ICJEaWFnbm9zaXNDb2RlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJsYW5ndWFnZSI6ICJ0ZXh0L2NxbC1pZGVudGlmaWVyIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAibGlicmFyeSI6ICJ1cm46dXVpZDpmNTI0MDI1ZS1hYzhkLTQ3MjUtYjYyZS1kYzE4ZmUwMjFhNjEiLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTWVhc3VyZSIsCiAgICAgICAgInNjb3JpbmciOiB7CiAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiY29ob3J0IiwKICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1zY29yaW5nIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAic3RhdHVzIjogImFjdGl2ZSIsCiAgICAgICAgInN1YmplY3RDb2RlYWJsZUNvbmNlcHQiOiB7CiAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgImNvZGUiOiAiUGF0aWVudCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3Jlc291cmNlLXR5cGVzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgfSwKICAgICAgICAidXJsIjogInVybjp1dWlkOmE3NmRkOWViLTk5YzktNGE0NS1iYmIyLWU3YmJkYzM2NDdkMSIKICAgIH0KfQ==</query> <!-- Optional field -->\r\n</request> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/request?query-format=CQL&template-id=focus-bbmri&output-format=JSON&query-expiration-date=2025-10-21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query-format",
+							"value": "CQL"
+						},
+						{
+							"key": "template-id",
+							"value": "focus-bbmri"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						},
+						{
+							"key": "query-expiration-date",
+							"value": "2025-10-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CQL - ExLiquid - CSV",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/request?query=ewoJImxhbmciOiAiY3FsIiwKCSJsaWIiOiB7CgkJImNvbnRlbnQiOiBbCgkJCXsKCQkJCSJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCgkJCQkiZGF0YSI6ICJiR2xpY21GeWVTQWlaWGhzYVhGMWFXUXRaR0Z6YUdKdllYSmtJZ3AxYzJsdVp5QkdTRWxTSUhabGNuTnBiMjRnSnpRdU1DNHdKd3BwYm1Oc2RXUmxJRVpJU1ZKSVpXeHdaWEp6SUhabGNuTnBiMjRnSnpRdU1DNHdKd29LWTI5a1pYTjVjM1JsYlNCVFlXMXdiR1ZOWVhSbGNtbGhiRlI1Y0dVNklDZG9kSFJ3Y3pvdkwyWm9hWEl1WW1KdGNta3VaR1V2UTI5a1pWTjVjM1JsYlM5VFlXMXdiR1ZOWVhSbGNtbGhiRlI1Y0dVbkNncGpiMjUwWlhoMElGQmhkR2xsYm5RS0NtUmxabWx1WlNCQmJHbHhkVzkwT2lBS0lDQmJVM0JsWTJsdFpXNWRJRk1LSUNCM2FHVnlaU0JsZUdsemRITWdVeTVqYjJ4c1pXTjBhVzl1TG5GMVlXNTBhWFI1TG5aaGJIVmxJR0Z1WkNCbGVHbHpkSE1nVXk1d1lYSmxiblF1Y21WbVpYSmxibU5sQ2dwa1pXWnBibVVnUVd4cGNYVnZkRWR5YjNWd1VtVm1aWEpsYm1ObGN6b2dDaUFnWm14aGRIUmxiaUJCYkdseGRXOTBJRk1LSUNCeVpYUjFjbTRnVXk1d1lYSmxiblF1Y21WbVpYSmxibU5sQ2dwa1pXWnBibVVnUVd4cGNYVnZkRWR5YjNWd1YybDBhRUZzYVhGMWIzUTZDaUFnVzFOd1pXTnBiV1Z1WFNCVENpQWdkMmhsY21VZ2JtOTBJQ2hUTG1sa1pXNTBhV1pwWlhJdWMzbHpkR1Z0SUdOdmJuUmhhVzV6SUNkb2RIUndPaTh2Wkd0MGF5NWthMlo2TG1SbEwyWm9hWEl2YzJsa0wyVjRiR2x4ZFdsa0xYTndaV05wYldWdUp5a0tJQ0FnSUdGdVpDQnViM1FnWlhocGMzUnpJRk11WTI5c2JHVmpkR2x2Ymk1eGRXRnVkR2wwZVM1MllXeDFaUW9nSUNBZ1lXNWtJRzV2ZENCbGVHbHpkSE1nVXk1amIyNTBZV2x1WlhJdWMzQmxZMmx0Wlc1UmRXRnVkR2wwZVM1MllXeDFaUW9nSUNBZ1lXNWtJRUZzYVhGMWIzUkhjbTkxY0ZKbFptVnlaVzVqWlhNZ1kyOXVkR0ZwYm5NZ0oxTndaV05wYldWdUx5Y2dLeUJUTG1sa0NncGtaV1pwYm1VZ1VISnBiV0Z5ZVZOaGJYQnNaVkpsWm1WeVpXNWpaWE02Q2lBZ1pteGhkSFJsYmlCQmJHbHhkVzkwUjNKdmRYQlhhWFJvUVd4cGNYVnZkQ0JUQ2lBZ2NtVjBkWEp1SUZNdWNHRnlaVzUwTG5KbFptVnlaVzVqWlFvS1pHVm1hVzVsSUVWNGJHbHhkV2xrVTNCbFkybHRaVzVYYVhSb1FXeHBjWFZ2ZERvS0lDQm1jbTl0SUZ0VGNHVmphVzFsYmwwZ1VISnBiV0Z5ZVZOaGJYQnNaUW9nSUhkb1pYSmxJRkJ5YVcxaGNubFRZVzF3YkdVdWFXUmxiblJwWm1sbGNpNXplWE4wWlcwZ1kyOXVkR0ZwYm5NZ0oyaDBkSEE2THk5a2EzUnJMbVJyWm5vdVpHVXZabWhwY2k5emFXUXZaWGhzYVhGMWFXUXRjM0JsWTJsdFpXNG5DaUFnWVc1a0lGQnlhVzFoY25sVFlXMXdiR1ZTWldabGNtVnVZMlZ6SUdOdmJuUmhhVzV6SUNkVGNHVmphVzFsYmk4bklDc2dVSEpwYldGeWVWTmhiWEJzWlM1cFpBb0taR1ZtYVc1bElFbHVTVzVwZEdsaGJGQnZjSFZzWVhScGIyNDZJQ0FLSUNCbGVHbHpkSE1nUlhoc2FYRjFhV1JUY0dWamFXMWxibGRwZEdoQmJHbHhkVzkwQ2dwa1pXWnBibVVnY21WMGNtbGxkbVZEYjI1a2FYUnBiMjQ2Q2lCR2FYSnpkQ2htY205dElGdERiMjVrYVhScGIyNWRJRU1LSUNCeVpYUjFjbTRnUXk1amIyUmxMbU52WkdsdVp5NTNhR1Z5WlNoemVYTjBaVzBnUFNBbmFIUjBjRG92TDJab2FYSXVaR1V2UTI5a1pWTjVjM1JsYlM5aVptRnliUzlwWTJRdE1UQXRaMjBuS1M1amIyUmxMbVpwY25OMEtDa3BDZ3BrWldacGJtVWdSR2xoWjI1dmMybHpPZ29nSUdsbUlDaHlaWFJ5YVdWMlpVTnZibVJwZEdsdmJpQnBjeUJ1ZFd4c0tTQjBhR1Z1SUNkMWJtdHViM2R1SnlCbGJITmxJSEpsZEhKcFpYWmxRMjl1WkdsMGFXOXVDZ3BrWldacGJtVWdablZ1WTNScGIyNGdVMkZ0Y0d4bFZIbHdaU2h6Y0dWamFXMWxiaUJHU0VsU0xsTndaV05wYldWdUtUb0tJQ0J6Y0dWamFXMWxiaTUwZVhCbExtTnZaR2x1Wnk1M2FHVnlaU2h6ZVhOMFpXMGdQU0FuYUhSMGNITTZMeTltYUdseUxtSmliWEpwTG1SbEwwTnZaR1ZUZVhOMFpXMHZVMkZ0Y0d4bFRXRjBaWEpwWVd4VWVYQmxKeWt1WTI5a1pTNW1hWEp6ZENncCIKCQkJfQoJCV0sCgkJInJlc291cmNlVHlwZSI6ICJMaWJyYXJ5IiwKCQkic3RhdHVzIjogImFjdGl2ZSIsCgkJInR5cGUiOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAibG9naWMtbGlicmFyeSIsCgkJCQkJInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL2xpYnJhcnktdHlwZSIKCQkJCX0KCQkJXQoJCX0sCgkJInVybCI6ICJ1cm46dXVpZDoxZDU3ZTA2Ni05NDFmLTRjYmYtOGI1Yy1hZmFmNmQwMzNmOTAiCgl9LAoJIm1lYXN1cmUiOiB7CgkJImdyb3VwIjogWwoJCQl7CgkJCQkiY29kZSI6IHsKCQkJCQkidGV4dCI6ICJwYXRpZW50cyIKCQkJCX0sCgkJCQkicG9wdWxhdGlvbiI6IFsKCQkJCQl7CgkJCQkJCSJjb2RlIjogewoJCQkJCQkJImNvZGluZyI6IFsKCQkJCQkJCQl7CgkJCQkJCQkJCSJjb2RlIjogImluaXRpYWwtcG9wdWxhdGlvbiIsCgkJCQkJCQkJCSJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9tZWFzdXJlLXBvcHVsYXRpb24iCgkJCQkJCQkJfQoJCQkJCQkJXQoJCQkJCQl9LAoJCQkJCQkiY3JpdGVyaWEiOiB7CgkJCQkJCQkiZXhwcmVzc2lvbiI6ICJJbkluaXRpYWxQb3B1bGF0aW9uIiwKCQkJCQkJCSJsYW5ndWFnZSI6ICJ0ZXh0L2NxbC1pZGVudGlmaWVyIgoJCQkJCQl9CgkJCQkJfQoJCQkJXQoJCQl9CgkJXSwKCQkibGlicmFyeSI6ICJ1cm46dXVpZDoxZDU3ZTA2Ni05NDFmLTRjYmYtOGI1Yy1hZmFmNmQwMzNmOTAiLAoJCSJyZXNvdXJjZVR5cGUiOiAiTWVhc3VyZSIsCgkJInNjb3JpbmciOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAiY29ob3J0IiwKCQkJCQkic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1zY29yaW5nIgoJCQkJfQoJCQldCgkJfSwKCQkic3RhdHVzIjogImFjdGl2ZSIsCgkJInN1YmplY3RDb2RlYWJsZUNvbmNlcHQiOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAiUGF0aWVudCIsCgkJCQkJInN5c3RlbSI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3Jlc291cmNlLXR5cGVzIgoJCQkJfQoJCQldCgkJfSwKCQkidXJsIjogInVybjp1dWlkOjJhNzFjMzZmLWY5NmEtNDZiYy05MWFhLTA4NGMwZjJhMjk1ZSIKCX0KfQ==&query-format=CQL_DATA&template-id=ccp-exliquid&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "ewoJImxhbmciOiAiY3FsIiwKCSJsaWIiOiB7CgkJImNvbnRlbnQiOiBbCgkJCXsKCQkJCSJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCgkJCQkiZGF0YSI6ICJiR2xpY21GeWVTQWlaWGhzYVhGMWFXUXRaR0Z6YUdKdllYSmtJZ3AxYzJsdVp5QkdTRWxTSUhabGNuTnBiMjRnSnpRdU1DNHdKd3BwYm1Oc2RXUmxJRVpJU1ZKSVpXeHdaWEp6SUhabGNuTnBiMjRnSnpRdU1DNHdKd29LWTI5a1pYTjVjM1JsYlNCVFlXMXdiR1ZOWVhSbGNtbGhiRlI1Y0dVNklDZG9kSFJ3Y3pvdkwyWm9hWEl1WW1KdGNta3VaR1V2UTI5a1pWTjVjM1JsYlM5VFlXMXdiR1ZOWVhSbGNtbGhiRlI1Y0dVbkNncGpiMjUwWlhoMElGQmhkR2xsYm5RS0NtUmxabWx1WlNCQmJHbHhkVzkwT2lBS0lDQmJVM0JsWTJsdFpXNWRJRk1LSUNCM2FHVnlaU0JsZUdsemRITWdVeTVqYjJ4c1pXTjBhVzl1TG5GMVlXNTBhWFI1TG5aaGJIVmxJR0Z1WkNCbGVHbHpkSE1nVXk1d1lYSmxiblF1Y21WbVpYSmxibU5sQ2dwa1pXWnBibVVnUVd4cGNYVnZkRWR5YjNWd1VtVm1aWEpsYm1ObGN6b2dDaUFnWm14aGRIUmxiaUJCYkdseGRXOTBJRk1LSUNCeVpYUjFjbTRnVXk1d1lYSmxiblF1Y21WbVpYSmxibU5sQ2dwa1pXWnBibVVnUVd4cGNYVnZkRWR5YjNWd1YybDBhRUZzYVhGMWIzUTZDaUFnVzFOd1pXTnBiV1Z1WFNCVENpQWdkMmhsY21VZ2JtOTBJQ2hUTG1sa1pXNTBhV1pwWlhJdWMzbHpkR1Z0SUdOdmJuUmhhVzV6SUNkb2RIUndPaTh2Wkd0MGF5NWthMlo2TG1SbEwyWm9hWEl2YzJsa0wyVjRiR2x4ZFdsa0xYTndaV05wYldWdUp5a0tJQ0FnSUdGdVpDQnViM1FnWlhocGMzUnpJRk11WTI5c2JHVmpkR2x2Ymk1eGRXRnVkR2wwZVM1MllXeDFaUW9nSUNBZ1lXNWtJRzV2ZENCbGVHbHpkSE1nVXk1amIyNTBZV2x1WlhJdWMzQmxZMmx0Wlc1UmRXRnVkR2wwZVM1MllXeDFaUW9nSUNBZ1lXNWtJRUZzYVhGMWIzUkhjbTkxY0ZKbFptVnlaVzVqWlhNZ1kyOXVkR0ZwYm5NZ0oxTndaV05wYldWdUx5Y2dLeUJUTG1sa0NncGtaV1pwYm1VZ1VISnBiV0Z5ZVZOaGJYQnNaVkpsWm1WeVpXNWpaWE02Q2lBZ1pteGhkSFJsYmlCQmJHbHhkVzkwUjNKdmRYQlhhWFJvUVd4cGNYVnZkQ0JUQ2lBZ2NtVjBkWEp1SUZNdWNHRnlaVzUwTG5KbFptVnlaVzVqWlFvS1pHVm1hVzVsSUVWNGJHbHhkV2xrVTNCbFkybHRaVzVYYVhSb1FXeHBjWFZ2ZERvS0lDQm1jbTl0SUZ0VGNHVmphVzFsYmwwZ1VISnBiV0Z5ZVZOaGJYQnNaUW9nSUhkb1pYSmxJRkJ5YVcxaGNubFRZVzF3YkdVdWFXUmxiblJwWm1sbGNpNXplWE4wWlcwZ1kyOXVkR0ZwYm5NZ0oyaDBkSEE2THk5a2EzUnJMbVJyWm5vdVpHVXZabWhwY2k5emFXUXZaWGhzYVhGMWFXUXRjM0JsWTJsdFpXNG5DaUFnWVc1a0lGQnlhVzFoY25sVFlXMXdiR1ZTWldabGNtVnVZMlZ6SUdOdmJuUmhhVzV6SUNkVGNHVmphVzFsYmk4bklDc2dVSEpwYldGeWVWTmhiWEJzWlM1cFpBb0taR1ZtYVc1bElFbHVTVzVwZEdsaGJGQnZjSFZzWVhScGIyNDZJQ0FLSUNCbGVHbHpkSE1nUlhoc2FYRjFhV1JUY0dWamFXMWxibGRwZEdoQmJHbHhkVzkwQ2dwa1pXWnBibVVnY21WMGNtbGxkbVZEYjI1a2FYUnBiMjQ2Q2lCR2FYSnpkQ2htY205dElGdERiMjVrYVhScGIyNWRJRU1LSUNCeVpYUjFjbTRnUXk1amIyUmxMbU52WkdsdVp5NTNhR1Z5WlNoemVYTjBaVzBnUFNBbmFIUjBjRG92TDJab2FYSXVaR1V2UTI5a1pWTjVjM1JsYlM5aVptRnliUzlwWTJRdE1UQXRaMjBuS1M1amIyUmxMbVpwY25OMEtDa3BDZ3BrWldacGJtVWdSR2xoWjI1dmMybHpPZ29nSUdsbUlDaHlaWFJ5YVdWMlpVTnZibVJwZEdsdmJpQnBjeUJ1ZFd4c0tTQjBhR1Z1SUNkMWJtdHViM2R1SnlCbGJITmxJSEpsZEhKcFpYWmxRMjl1WkdsMGFXOXVDZ3BrWldacGJtVWdablZ1WTNScGIyNGdVMkZ0Y0d4bFZIbHdaU2h6Y0dWamFXMWxiaUJHU0VsU0xsTndaV05wYldWdUtUb0tJQ0J6Y0dWamFXMWxiaTUwZVhCbExtTnZaR2x1Wnk1M2FHVnlaU2h6ZVhOMFpXMGdQU0FuYUhSMGNITTZMeTltYUdseUxtSmliWEpwTG1SbEwwTnZaR1ZUZVhOMFpXMHZVMkZ0Y0d4bFRXRjBaWEpwWVd4VWVYQmxKeWt1WTI5a1pTNW1hWEp6ZENncCIKCQkJfQoJCV0sCgkJInJlc291cmNlVHlwZSI6ICJMaWJyYXJ5IiwKCQkic3RhdHVzIjogImFjdGl2ZSIsCgkJInR5cGUiOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAibG9naWMtbGlicmFyeSIsCgkJCQkJInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL2xpYnJhcnktdHlwZSIKCQkJCX0KCQkJXQoJCX0sCgkJInVybCI6ICJ1cm46dXVpZDoxZDU3ZTA2Ni05NDFmLTRjYmYtOGI1Yy1hZmFmNmQwMzNmOTAiCgl9LAoJIm1lYXN1cmUiOiB7CgkJImdyb3VwIjogWwoJCQl7CgkJCQkiY29kZSI6IHsKCQkJCQkidGV4dCI6ICJwYXRpZW50cyIKCQkJCX0sCgkJCQkicG9wdWxhdGlvbiI6IFsKCQkJCQl7CgkJCQkJCSJjb2RlIjogewoJCQkJCQkJImNvZGluZyI6IFsKCQkJCQkJCQl7CgkJCQkJCQkJCSJjb2RlIjogImluaXRpYWwtcG9wdWxhdGlvbiIsCgkJCQkJCQkJCSJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9tZWFzdXJlLXBvcHVsYXRpb24iCgkJCQkJCQkJfQoJCQkJCQkJXQoJCQkJCQl9LAoJCQkJCQkiY3JpdGVyaWEiOiB7CgkJCQkJCQkiZXhwcmVzc2lvbiI6ICJJbkluaXRpYWxQb3B1bGF0aW9uIiwKCQkJCQkJCSJsYW5ndWFnZSI6ICJ0ZXh0L2NxbC1pZGVudGlmaWVyIgoJCQkJCQl9CgkJCQkJfQoJCQkJXQoJCQl9CgkJXSwKCQkibGlicmFyeSI6ICJ1cm46dXVpZDoxZDU3ZTA2Ni05NDFmLTRjYmYtOGI1Yy1hZmFmNmQwMzNmOTAiLAoJCSJyZXNvdXJjZVR5cGUiOiAiTWVhc3VyZSIsCgkJInNjb3JpbmciOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAiY29ob3J0IiwKCQkJCQkic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1zY29yaW5nIgoJCQkJfQoJCQldCgkJfSwKCQkic3RhdHVzIjogImFjdGl2ZSIsCgkJInN1YmplY3RDb2RlYWJsZUNvbmNlcHQiOiB7CgkJCSJjb2RpbmciOiBbCgkJCQl7CgkJCQkJImNvZGUiOiAiUGF0aWVudCIsCgkJCQkJInN5c3RlbSI6ICJodHRwOi8vaGw3Lm9yZy9maGlyL3Jlc291cmNlLXR5cGVzIgoJCQkJfQoJCQldCgkJfSwKCQkidXJsIjogInVybjp1dWlkOjJhNzFjMzZmLWY5NmEtNDZiYy05MWFhLTA4NGMwZjJhMjk1ZSIKCX0KfQ=="
+						},
+						{
+							"key": "query-format",
+							"value": "CQL_DATA"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp-exliquid"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full - Exliquid CSV",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp-exliquid&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp-exliquid"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full - Exliquid CSV mit Template in Body",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<template id=\"ccp-exliquid\" excel-filename=\"Export-${TIMESTAMP}.xlsx\" source-id=\"blaze-store\" >\r\n\r\n  <container csv-filename=\"Patient-${TIMESTAMP}.csv\" excel-sheet=\"Patient\" xml-filename=\"Patient-${TIMESTAMP}.xml\" xml-root-element=\"Patients\" xml-element=\"Patient\" json-filename=\"Patient-${TIMESTAMP}.json\" json-key=\"Patients\" >\r\n    <attribute csv-column=\"Patient-ID\" xml-element=\"Patient-ID\" json-key=\"Patient-ID\" excel-column=\"Patient-ID\" val-fhir-path=\"Patient.id.value\" anonym=\"Pat\" op=\"EXTRACT_RELATIVE_ID\"/>\r\n    <attribute csv-column=\"DKTK-ID-Global\" xml-element=\"DKTK-ID-Global\" json-key=\"DKTK-ID-Global\" excel-column=\"DKTK-ID-Global\" val-fhir-path=\"Patient.identifier.where(type.coding.code = 'Global').value.value\"/>\r\n    <attribute csv-column=\"DKTK-ID-Lokal\" xml-element=\"DKTK-ID-Lokal\" json-key=\"DKTK-ID-Lokal\" excel-column=\"DKTK-ID-Lokal\" val-fhir-path=\"Patient.identifier.where(type.coding.code = 'Lokal').value.value\" />\r\n    <attribute csv-column=\"Geburtsdatum\" xml-element=\"Geburtsdatum\" json-key=\"Geburtsdatum\" excel-column=\"Geburtsdatum\" val-fhir-path=\"Patient.birthDate.value\"/>\r\n    <attribute csv-column=\"Geschlecht\" xml-element=\"Geschlecht\" json-key=\"Geschlecht\" excel-column=\"Geschlecht\" val-fhir-path=\"Patient.gender.value\" />\r\n    <attribute csv-column=\"Datum des letztbekannten Vitalstatus\" xml-element=\"Datum-des-letztbekannten-Vitalstatus\" json-key=\"Datum des letztbekannten Vitalstatus\" excel-column=\"Datum des letztbekannten Vitalstatus\" val-fhir-path=\"Observation.where(code.coding.code = '75186-7').effective.value\" join-fhir-path=\"/Observation.where(code.coding.code = '75186-7').subject.reference.value\"/>\r\n    <attribute csv-column=\"Vitalstatus\" xml-element=\"Vitalstatus\" json-key=\"Vitalstatus\" excel-column=\"Vitalstatus\" val-fhir-path=\"Observation.where(code.coding.code = '75186-7').value.coding.code.value\" join-fhir-path=\"/Observation.where(code.coding.code = '75186-7').subject.reference.value\"/>\r\n    <!--fehlt in ADT2FHIR--><attribute csv-column=\"Tod tumorbedingt\" xml-element=\"Tod-tumorbedingt\" json-key=\"Tod tumorbedingt\" excel-column=\"Tod tumorbedingt\" val-fhir-path=\"Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://fhir.de/CodeSystem/bfarm/icd-10-gm').code.value\" join-fhir-path=\"/Observation.where(code.coding.code = '68343-3').subject.reference.value\"/>\r\n    <!--fehlt in ADT2FHIR--><attribute csv-column=\"Todesursachen\" xml-element=\"Todesursachen\" json-key=\"Todesursachen\" excel-column=\"Todesursachen\" val-fhir-path=\"Observation.where(code.coding.code = '68343-3').value.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/JNUCS').code.value\" join-fhir-path=\"/Observation.where(code.coding.code = '68343-3').subject.reference.value\"/>\r\n  </container>\r\n\r\n  <container csv-filename=\"Diagnosis-${TIMESTAMP}.csv\" excel-sheet=\"Diagnosis\" xml-filename=\"Diagnosis-${TIMESTAMP}.xml\" xml-root-element=\"Diagnoses\" xml-element=\"Diagnosis\" json-filename=\"Diagnosis-${TIMESTAMP}.json\" json-key=\"Diagnoses\">\r\n    <attribute csv-column=\"Diagnosis-ID\" xml-element=\"Diagnosis-ID\" json-key=\"Diagnosis-ID\" excel-column=\"Diagnosis-ID\" val-fhir-path=\"Condition.id.value\" anonym=\"Dia\" op=\"EXTRACT_RELATIVE_ID\"/>\r\n    <attribute csv-column=\"Patient-ID\" xml-element=\"Patient-ID\" json-key=\"Patient-ID\" excel-column=\"Patient-ID\" val-fhir-path=\"Condition.subject.reference.value\" anonym=\"Pat\"/>\r\n    <attribute csv-column=\"Primärdiagnose\" xml-element=\"Primärdiagnose\" json-key=\"Primärdiagnose\" excel-column=\"Primärdiagnose\" val-fhir-path=\"Condition.code.coding.code.value\"/>\r\n    <attribute csv-column=\"Tumor Diagnosedatum\" xml-element=\"Tumor-Diagnosedatum\" json-key=\"Tumor Diagnosedatum\" excel-column=\"Tumor Diagnosedatum\" val-fhir-path=\"Condition.onset.value\"/>\r\n    <attribute csv-column=\"Primaertumor Diagnosetext\" xml-element=\"Primaertumor-Diagnosetext\" json-key=\"Primaertumor Diagnosetext\" excel-column=\"Primaertumor Diagnosetext\" val-fhir-path=\"Condition.code.text.value\"/>\r\n    <attribute csv-column=\"Version des ICD-10-Katalogs\" xml-element=\"Version-des-ICD-10-Katalogs\" json-key=\"Version des ICD-10-Katalogs\" excel-column=\"Version des ICD-10-Katalogs\" val-fhir-path=\"Condition.code.coding.version.value\"/>\r\n    <attribute csv-column=\"Lokalisation\" xml-element=\"Lokalisation\" json-key=\"Lokalisation\" excel-column=\"Lokalisation\" val-fhir-path=\"Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').code.value\"/>\r\n    <attribute csv-column=\"ICD-O Katalog Topographie (Version)\" xml-element=\"ICD-O-Katalog-Topographie-Version\" json-key=\"ICD-O Katalog Topographie (Version)\" excel-column=\"ICD-O Katalog Topographie (Version)\" val-fhir-path=\"Condition.bodySite.coding.where(system = 'urn:oid:2.16.840.1.113883.6.43.1').version.value\"/>\r\n    <attribute csv-column=\"Seitenlokalisation nach ADT-GEKID\" xml-element=\"Seitenlokalisation-nach-ADT-GEKID\" json-key=\"Seitenlokalisation nach ADT-GEKID\" excel-column=\"Seitenlokalisation nach ADT-GEKID\" val-fhir-path=\"Condition.bodySite.coding.where(system = 'http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS').code.value\"/>\r\n  </container>\r\n\r\n  <container csv-filename=\"Sample-${TIMESTAMP}.csv\" excel-sheet=\"Sample\" xml-filename=\"Sample-${TIMESTAMP}.xml\" xml-root-element=\"Samples\" xml-element=\"Sample\" json-filename=\"Sample-${TIMESTAMP}.json\" json-key=\"Samples\">\r\n    <attribute csv-column=\"Sample-ID\" xml-element=\"Sample-ID\" json-key=\"Sample-ID\" excel-column=\"Sample-ID\" val-fhir-path=\"Specimen.id\" anonym=\"Sam\" op=\"EXTRACT_RELATIVE_ID\"/>\r\n    <attribute csv-column=\"Patient-ID\" xml-element=\"Patient-ID\" json-key=\"Patient-ID\" excel-column=\"Patient-ID\" val-fhir-path=\"Specimen.subject.reference.value\" anonym=\"Pat\" />\r\n    <attribute csv-column=\"Entnahmedatum\" xml-element=\"Entnahmedatum\" json-key=\"Entnahmedatum\" excel-column=\"Entnahmedatum\" val-fhir-path=\"Specimen.collection.collectedDateTime.value\"/>\r\n    <attribute csv-column=\"Probentyp\" xml-element=\"Probenart\" json-key=\"Probenart\" excel-column=\"Probenart\" val-fhir-path=\"Specimen.type.coding.code.value\"/>\r\n    <attribute csv-column=\"Status Probe\" xml-element=\"Status\" json-key=\"Status\" excel-column=\"Status\" val-fhir-path=\"Specimen.status.code.value\"/>\r\n    <attribute csv-column=\"Probe-Projektbezeichnung\" xml-element=\"Projekt\" json-key=\"Projekt\" excel-column=\"Projekt\" val-fhir-path=\"Specimen.identifier.system.value\"/>\r\n   <!-- @TODO: it is still necessary to clarify whether it would not be better to take the quantity of collection.quantity -->\r\n    <attribute csv-column=\"Restmenge\" xml-element=\"Menge\" json-key=\"Menge\" excel-column=\"Menge\" val-fhir-path=\"Specimen.container.specimenQuantity.value.value\"/>\r\n    <attribute csv-column=\"Restmenge Einheit\" xml-element=\"Probenmenge Einheit\" json-key=\"Probenmenge Einheit\" excel-column=\"Probenmenge Einheit\" val-fhir-path=\"Specimen.container.specimenQuantity.unit.value\"/>\r\n    <attribute csv-column=\"Aliquot\" xml-element=\"Aliquot\" json-key=\"Aliquot\" excel-column=\"Aliquot\" val-fhir-path=\"Specimen.parent.reference.exists().value\" />\r\n  </container>\r\n\r\n  <cql>\r\n    <default-fhir-search-query>Patient</default-fhir-search-query>\r\n    <token key=\"DKTK_STRAT_DEF_IN_INITIAL_POPULATION\" value= \"define InInitialPopulation:\" />\r\n    <measure-parameters>\r\n      {\r\n      \"resourceType\": \"Parameters\",\r\n      \"parameter\": [\r\n      {\r\n      \"name\": \"periodStart\",\r\n      \"valueDate\": \"2000\"\r\n      },\r\n      {\r\n      \"name\": \"periodEnd\",\r\n      \"valueDate\": \"2030\"\r\n      },\r\n      {\r\n      \"name\": \"reportType\",\r\n      \"valueCode\": \"subject-list\"\r\n      }\r\n      ]\r\n      }\r\n    </measure-parameters>\r\n  </cql>\r\n\r\n\r\n\r\n\r\n  <fhir-rev-include>Observation:patient</fhir-rev-include>\r\n  <fhir-rev-include>Condition:patient</fhir-rev-include>\r\n  <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include>\r\n  <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>\r\n  <fhir-rev-include>Procedure:patient</fhir-rev-include>\r\n  <fhir-rev-include>Specimen:patient</fhir-rev-include>\r\n\r\n</template>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CQL - Evaluate Measure Excel",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/request?query=eyJsYW5nIjoiY3FsIiwibGliIjp7InJlc291cmNlVHlwZSI6IkxpYnJhcnkiLCJ1cmwiOiJ1cm46dXVpZDo1MGQ0ZTEwYi1jMTRmLTRkYzAtYTNjZi1mOGIwMGNmMDhkMjgiLCJzdGF0dXMiOiJhY3RpdmUiLCJ0eXBlIjp7ImNvZGluZyI6W3sic3lzdGVtIjoiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiLCJjb2RlIjoibG9naWMtbGlicmFyeSJ9XX0sImNvbnRlbnQiOlt7ImNvbnRlbnRUeXBlIjoidGV4dC9jcWwiLCJkYXRhIjoiYkdsaWNtRnllU0JTWlhSeWFXVjJaUXAxYzJsdVp5QkdTRWxTSUhabGNuTnBiMjRnSnpRdU1DNHdKd3BwYm1Oc2RXUmxJRVpJU1ZKSVpXeHdaWEp6SUhabGNuTnBiMjRnSnpRdU1DNHdKd29LWTI5a1pYTjVjM1JsYlNCc2IybHVZem9nSjJoMGRIQTZMeTlzYjJsdVl5NXZjbWNuQ2dwamIyNTBaWGgwSUZCaGRHbGxiblFLQ2tSTFZFdGZVMVJTUVZSZlIwVk9SRVZTWDFOVVVrRlVTVVpKUlZJS0NrUkxWRXRmVTFSU1FWUmZRVWRGWDFOVVVrRlVTVVpKUlZJS0NrUkxWRXRmVTFSU1FWUmZSRVZEUlVGVFJVUmZVMVJTUVZSSlJrbEZVZ29LUkV0VVMxOVRWRkpCVkY5RVNVRkhUazlUU1ZOZlUxUlNRVlJKUmtsRlVnb0tSRXRVUzE5VFZGSkJWRjlUVUVWRFNVMUZUbDlUVkZKQlZFbEdTVVZTQ2dwRVMxUkxYMU5VVWtGVVgxQlNUME5GUkZWU1JWOVRWRkpCVkVsR1NVVlNDZ3BFUzFSTFgxTlVVa0ZVWDAxRlJFbERRVlJKVDA1ZlUxUlNRVlJKUmtsRlVncEVTMVJMWDFOVVVrRlVYMFJGUmw5SlRsOUpUa2xVU1VGTVgxQlBVRlZNUVZSSlQwNEtLRkJoZEdsbGJuUXVaMlZ1WkdWeUlEMGdKMjFoYkdVbktRPT0ifV19LCJtZWFzdXJlIjp7InJlc291cmNlVHlwZSI6Ik1lYXN1cmUiLCJ1cmwiOiJ1cm46dXVpZDoxMzA0MmEwYi1mMjgzLTQ5ODItODdkZC01NTI5ZjVhODhhODIiLCJzdGF0dXMiOiJhY3RpdmUiLCJzdWJqZWN0Q29kZWFibGVDb25jZXB0Ijp7ImNvZGluZyI6W3sic3lzdGVtIjoiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIsImNvZGUiOiJQYXRpZW50In1dfSwibGlicmFyeSI6InVybjp1dWlkOjUwZDRlMTBiLWMxNGYtNGRjMC1hM2NmLWY4YjAwY2YwOGQyOCIsInNjb3JpbmciOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIsImNvZGUiOiJjb2hvcnQifV19LCJncm91cCI6W3siY29kZSI6eyJ0ZXh0IjoicGF0aWVudHMifSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJJbkluaXRpYWxQb3B1bGF0aW9uIn19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiR2VuZGVyIn0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwiLCJleHByZXNzaW9uIjoiR2VuZGVyIn19LHsiY29kZSI6eyJ0ZXh0IjoiNzUxODYtNyJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IkRlY2Vhc2VkIn19LHsiY29kZSI6eyJ0ZXh0IjoiQWdlIn0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwiLCJleHByZXNzaW9uIjoiQWdlQ2xhc3MifX1dfSx7ImNvZGUiOnsidGV4dCI6ImRpYWdub3NpcyJ9LCJleHRlbnNpb24iOlt7InVybCI6Imh0dHA6Ly9obDcub3JnL2ZoaXIvdXMvY3FmbWVhc3VyZXMvU3RydWN0dXJlRGVmaW5pdGlvbi9jcWZtLXBvcHVsYXRpb25CYXNpcyIsInZhbHVlQ29kZSI6IkNvbmRpdGlvbiJ9XSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJEaWFnbm9zaXMifX1dLCJzdHJhdGlmaWVyIjpbeyJjb2RlIjp7InRleHQiOiJkaWFnbm9zaXMifSwiY3JpdGVyaWEiOnsibGFuZ3VhZ2UiOiJ0ZXh0L2NxbC1pZGVudGlmaWVyIiwiZXhwcmVzc2lvbiI6IkRpYWdub3Npc0NvZGUifX1dfSx7ImNvZGUiOnsidGV4dCI6InNwZWNpbWVuIn0sImV4dGVuc2lvbiI6W3sidXJsIjoiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwidmFsdWVDb2RlIjoiU3BlY2ltZW4ifV0sInBvcHVsYXRpb24iOlt7ImNvZGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIsImNvZGUiOiJpbml0aWFsLXBvcHVsYXRpb24ifV19LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsLWlkZW50aWZpZXIiLCJleHByZXNzaW9uIjoiU3BlY2ltZW4ifX1dLCJzdHJhdGlmaWVyIjpbeyJjb2RlIjp7InRleHQiOiJzYW1wbGVfa2luZCJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IlNhbXBsZVR5cGUifX1dfSx7ImNvZGUiOnsidGV4dCI6InByb2NlZHVyZXMifSwiZXh0ZW5zaW9uIjpbeyJ1cmwiOiJodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NxZm1lYXN1cmVzL1N0cnVjdHVyZURlZmluaXRpb24vY3FmbS1wb3B1bGF0aW9uQmFzaXMiLCJ2YWx1ZUNvZGUiOiJQcm9jZWR1cmUifV0sInBvcHVsYXRpb24iOlt7ImNvZGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIsImNvZGUiOiJpbml0aWFsLXBvcHVsYXRpb24ifV19LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsLWlkZW50aWZpZXIiLCJleHByZXNzaW9uIjoiUHJvY2VkdXJlIn19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiUHJvY2VkdXJlVHlwZSJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IlByb2NlZHVyZVR5cGUifX1dfSx7ImNvZGUiOnsidGV4dCI6Im1lZGljYXRpb25TdGF0ZW1lbnRzIn0sImV4dGVuc2lvbiI6W3sidXJsIjoiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwidmFsdWVDb2RlIjoiTWVkaWNhdGlvblN0YXRlbWVudCJ9XSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJNZWRpY2F0aW9uU3RhdGVtZW50In19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiTWVkaWNhdGlvblR5cGUifSwiY3JpdGVyaWEiOnsibGFuZ3VhZ2UiOiJ0ZXh0L2NxbCIsImV4cHJlc3Npb24iOiJQcm9jZWR1cmVUeXBlIn19XX1dfX0=&query-format=CQL&template-id=focus-dktk&output-format=EXCEL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "eyJsYW5nIjoiY3FsIiwibGliIjp7InJlc291cmNlVHlwZSI6IkxpYnJhcnkiLCJ1cmwiOiJ1cm46dXVpZDo1MGQ0ZTEwYi1jMTRmLTRkYzAtYTNjZi1mOGIwMGNmMDhkMjgiLCJzdGF0dXMiOiJhY3RpdmUiLCJ0eXBlIjp7ImNvZGluZyI6W3sic3lzdGVtIjoiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiLCJjb2RlIjoibG9naWMtbGlicmFyeSJ9XX0sImNvbnRlbnQiOlt7ImNvbnRlbnRUeXBlIjoidGV4dC9jcWwiLCJkYXRhIjoiYkdsaWNtRnllU0JTWlhSeWFXVjJaUXAxYzJsdVp5QkdTRWxTSUhabGNuTnBiMjRnSnpRdU1DNHdKd3BwYm1Oc2RXUmxJRVpJU1ZKSVpXeHdaWEp6SUhabGNuTnBiMjRnSnpRdU1DNHdKd29LWTI5a1pYTjVjM1JsYlNCc2IybHVZem9nSjJoMGRIQTZMeTlzYjJsdVl5NXZjbWNuQ2dwamIyNTBaWGgwSUZCaGRHbGxiblFLQ2tSTFZFdGZVMVJTUVZSZlIwVk9SRVZTWDFOVVVrRlVTVVpKUlZJS0NrUkxWRXRmVTFSU1FWUmZRVWRGWDFOVVVrRlVTVVpKUlZJS0NrUkxWRXRmVTFSU1FWUmZSRVZEUlVGVFJVUmZVMVJTUVZSSlJrbEZVZ29LUkV0VVMxOVRWRkpCVkY5RVNVRkhUazlUU1ZOZlUxUlNRVlJKUmtsRlVnb0tSRXRVUzE5VFZGSkJWRjlUVUVWRFNVMUZUbDlUVkZKQlZFbEdTVVZTQ2dwRVMxUkxYMU5VVWtGVVgxQlNUME5GUkZWU1JWOVRWRkpCVkVsR1NVVlNDZ3BFUzFSTFgxTlVVa0ZVWDAxRlJFbERRVlJKVDA1ZlUxUlNRVlJKUmtsRlVncEVTMVJMWDFOVVVrRlVYMFJGUmw5SlRsOUpUa2xVU1VGTVgxQlBVRlZNUVZSSlQwNEtLRkJoZEdsbGJuUXVaMlZ1WkdWeUlEMGdKMjFoYkdVbktRPT0ifV19LCJtZWFzdXJlIjp7InJlc291cmNlVHlwZSI6Ik1lYXN1cmUiLCJ1cmwiOiJ1cm46dXVpZDoxMzA0MmEwYi1mMjgzLTQ5ODItODdkZC01NTI5ZjVhODhhODIiLCJzdGF0dXMiOiJhY3RpdmUiLCJzdWJqZWN0Q29kZWFibGVDb25jZXB0Ijp7ImNvZGluZyI6W3sic3lzdGVtIjoiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIsImNvZGUiOiJQYXRpZW50In1dfSwibGlicmFyeSI6InVybjp1dWlkOjUwZDRlMTBiLWMxNGYtNGRjMC1hM2NmLWY4YjAwY2YwOGQyOCIsInNjb3JpbmciOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIsImNvZGUiOiJjb2hvcnQifV19LCJncm91cCI6W3siY29kZSI6eyJ0ZXh0IjoicGF0aWVudHMifSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJJbkluaXRpYWxQb3B1bGF0aW9uIn19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiR2VuZGVyIn0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwiLCJleHByZXNzaW9uIjoiR2VuZGVyIn19LHsiY29kZSI6eyJ0ZXh0IjoiNzUxODYtNyJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IkRlY2Vhc2VkIn19LHsiY29kZSI6eyJ0ZXh0IjoiQWdlIn0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwiLCJleHByZXNzaW9uIjoiQWdlQ2xhc3MifX1dfSx7ImNvZGUiOnsidGV4dCI6ImRpYWdub3NpcyJ9LCJleHRlbnNpb24iOlt7InVybCI6Imh0dHA6Ly9obDcub3JnL2ZoaXIvdXMvY3FmbWVhc3VyZXMvU3RydWN0dXJlRGVmaW5pdGlvbi9jcWZtLXBvcHVsYXRpb25CYXNpcyIsInZhbHVlQ29kZSI6IkNvbmRpdGlvbiJ9XSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJEaWFnbm9zaXMifX1dLCJzdHJhdGlmaWVyIjpbeyJjb2RlIjp7InRleHQiOiJkaWFnbm9zaXMifSwiY3JpdGVyaWEiOnsibGFuZ3VhZ2UiOiJ0ZXh0L2NxbC1pZGVudGlmaWVyIiwiZXhwcmVzc2lvbiI6IkRpYWdub3Npc0NvZGUifX1dfSx7ImNvZGUiOnsidGV4dCI6InNwZWNpbWVuIn0sImV4dGVuc2lvbiI6W3sidXJsIjoiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwidmFsdWVDb2RlIjoiU3BlY2ltZW4ifV0sInBvcHVsYXRpb24iOlt7ImNvZGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIsImNvZGUiOiJpbml0aWFsLXBvcHVsYXRpb24ifV19LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsLWlkZW50aWZpZXIiLCJleHByZXNzaW9uIjoiU3BlY2ltZW4ifX1dLCJzdHJhdGlmaWVyIjpbeyJjb2RlIjp7InRleHQiOiJzYW1wbGVfa2luZCJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IlNhbXBsZVR5cGUifX1dfSx7ImNvZGUiOnsidGV4dCI6InByb2NlZHVyZXMifSwiZXh0ZW5zaW9uIjpbeyJ1cmwiOiJodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NxZm1lYXN1cmVzL1N0cnVjdHVyZURlZmluaXRpb24vY3FmbS1wb3B1bGF0aW9uQmFzaXMiLCJ2YWx1ZUNvZGUiOiJQcm9jZWR1cmUifV0sInBvcHVsYXRpb24iOlt7ImNvZGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtcG9wdWxhdGlvbiIsImNvZGUiOiJpbml0aWFsLXBvcHVsYXRpb24ifV19LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsLWlkZW50aWZpZXIiLCJleHByZXNzaW9uIjoiUHJvY2VkdXJlIn19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiUHJvY2VkdXJlVHlwZSJ9LCJjcml0ZXJpYSI6eyJsYW5ndWFnZSI6InRleHQvY3FsIiwiZXhwcmVzc2lvbiI6IlByb2NlZHVyZVR5cGUifX1dfSx7ImNvZGUiOnsidGV4dCI6Im1lZGljYXRpb25TdGF0ZW1lbnRzIn0sImV4dGVuc2lvbiI6W3sidXJsIjoiaHR0cDovL2hsNy5vcmcvZmhpci91cy9jcWZtZWFzdXJlcy9TdHJ1Y3R1cmVEZWZpbml0aW9uL2NxZm0tcG9wdWxhdGlvbkJhc2lzIiwidmFsdWVDb2RlIjoiTWVkaWNhdGlvblN0YXRlbWVudCJ9XSwicG9wdWxhdGlvbiI6W3siY29kZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6Imh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIiwiY29kZSI6ImluaXRpYWwtcG9wdWxhdGlvbiJ9XX0sImNyaXRlcmlhIjp7Imxhbmd1YWdlIjoidGV4dC9jcWwtaWRlbnRpZmllciIsImV4cHJlc3Npb24iOiJNZWRpY2F0aW9uU3RhdGVtZW50In19XSwic3RyYXRpZmllciI6W3siY29kZSI6eyJ0ZXh0IjoiTWVkaWNhdGlvblR5cGUifSwiY3JpdGVyaWEiOnsibGFuZ3VhZ2UiOiJ0ZXh0L2NxbCIsImV4cHJlc3Npb24iOiJQcm9jZWR1cmVUeXBlIn19XX1dfX0="
+						},
+						{
+							"key": "query-format",
+							"value": "CQL"
+						},
+						{
+							"key": "template-id",
+							"value": "focus-dktk"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CQL - Data - Excel",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/request?query=ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjI1MFpYaDBJRkJoZEdsbGJuUUtDa1JMVkV0ZlUxUlNRVlJmUkVWR1gwbE9YMGxPU1ZSSlFVeGZVRTlRVlV4QlZFbFBUZ29vVUdGMGFXVnVkQzVuWlc1a1pYSWdQU0FuYldGc1pTY3AiCiAgICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTGlicmFyeSIsCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJ0eXBlIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImxvZ2ljLWxpYnJhcnkiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJ1cmwiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IgogICAgfSwKICAgICJtZWFzdXJlIjogewogICAgICAgICJncm91cCI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInRleHQiOiAicGF0aWVudHMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgInBvcHVsYXRpb24iOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJpbml0aWFsLXBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiSW5Jbml0aWFsUG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgImxpYnJhcnkiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IiwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIk1lYXN1cmUiLAogICAgICAgICJzY29yaW5nIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImNvaG9ydCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJzdWJqZWN0Q29kZWFibGVDb25jZXB0IjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogIlBhdGllbnQiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInVybCI6ICJ1cm46dXVpZDo4OGRiMTMwNS1hYjM4LTRhMzgtODVmZC04ZDdhNGM4YmMyZGYiCiAgICB9Cn0=&query-format=CQL_DATA&template-id=ccp&output-format=EXCEL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjI1MFpYaDBJRkJoZEdsbGJuUUtDa1JMVkV0ZlUxUlNRVlJmUkVWR1gwbE9YMGxPU1ZSSlFVeGZVRTlRVlV4QlZFbFBUZ29vVUdGMGFXVnVkQzVuWlc1a1pYSWdQU0FuYldGc1pTY3AiCiAgICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTGlicmFyeSIsCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJ0eXBlIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImxvZ2ljLWxpYnJhcnkiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJ1cmwiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IgogICAgfSwKICAgICJtZWFzdXJlIjogewogICAgICAgICJncm91cCI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInRleHQiOiAicGF0aWVudHMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgInBvcHVsYXRpb24iOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJpbml0aWFsLXBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiSW5Jbml0aWFsUG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgImxpYnJhcnkiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IiwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIk1lYXN1cmUiLAogICAgICAgICJzY29yaW5nIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImNvaG9ydCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJzdWJqZWN0Q29kZWFibGVDb25jZXB0IjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogIlBhdGllbnQiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInVybCI6ICJ1cm46dXVpZDo4OGRiMTMwNS1hYjM4LTRhMzgtODVmZC04ZDdhNGM4YmMyZGYiCiAgICB9Cn0="
+						},
+						{
+							"key": "query-format",
+							"value": "CQL_DATA"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CQL - Data - Excel Copy",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/request?query=ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjI1MFpYaDBJRkJoZEdsbGJuUUtDa1JMVkV0ZlUxUlNRVlJmUkVWR1gwbE9YMGxPU1ZSSlFVeGZVRTlRVlV4QlZFbFBUZ29vVUdGMGFXVnVkQzVuWlc1a1pYSWdQU0FuYldGc1pTY3AiCiAgICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTGlicmFyeSIsCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJ0eXBlIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImxvZ2ljLWxpYnJhcnkiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJ1cmwiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IgogICAgfSwKICAgICJtZWFzdXJlIjogewogICAgICAgICJncm91cCI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInRleHQiOiAicGF0aWVudHMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgInBvcHVsYXRpb24iOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJpbml0aWFsLXBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiSW5Jbml0aWFsUG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgImxpYnJhcnkiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IiwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIk1lYXN1cmUiLAogICAgICAgICJzY29yaW5nIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImNvaG9ydCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJzdWJqZWN0Q29kZWFibGVDb25jZXB0IjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogIlBhdGllbnQiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInVybCI6ICJ1cm46dXVpZDo4OGRiMTMwNS1hYjM4LTRhMzgtODVmZC04ZDdhNGM4YmMyZGYiCiAgICB9Cn0=&query-format=CQL_DATA&template-id=ccp&output-format=EXCEL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "ewogICAgImxhbmciOiAiY3FsIiwKICAgICJsaWIiOiB7CiAgICAgICAgImNvbnRlbnQiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb250ZW50VHlwZSI6ICJ0ZXh0L2NxbCIsCiAgICAgICAgICAgICAgICAiZGF0YSI6ICJiR2xpY21GeWVTQlNaWFJ5YVdWMlpRcDFjMmx1WnlCR1NFbFNJSFpsY25OcGIyNGdKelF1TUM0d0p3cHBibU5zZFdSbElFWklTVkpJWld4d1pYSnpJSFpsY25OcGIyNGdKelF1TUM0d0p3b0tZMjlrWlhONWMzUmxiU0JzYjJsdVl6b2dKMmgwZEhBNkx5OXNiMmx1WXk1dmNtY25DZ3BqYjI1MFpYaDBJRkJoZEdsbGJuUUtDa1JMVkV0ZlUxUlNRVlJmUkVWR1gwbE9YMGxPU1ZSSlFVeGZVRTlRVlV4QlZFbFBUZ29vVUdGMGFXVnVkQzVuWlc1a1pYSWdQU0FuYldGc1pTY3AiCiAgICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZXNvdXJjZVR5cGUiOiAiTGlicmFyeSIsCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJ0eXBlIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImxvZ2ljLWxpYnJhcnkiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9saWJyYXJ5LXR5cGUiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICB9LAogICAgICAgICJ1cmwiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IgogICAgfSwKICAgICJtZWFzdXJlIjogewogICAgICAgICJncm91cCI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgImNvZGUiOiB7CiAgICAgICAgICAgICAgICAgICAgInRleHQiOiAicGF0aWVudHMiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgInBvcHVsYXRpb24iOiBbCiAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29kZSI6ICJpbml0aWFsLXBvcHVsYXRpb24iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic3lzdGVtIjogImh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vbWVhc3VyZS1wb3B1bGF0aW9uIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgImNyaXRlcmlhIjogewogICAgICAgICAgICAgICAgICAgICAgICAgICAgImV4cHJlc3Npb24iOiAiSW5Jbml0aWFsUG9wdWxhdGlvbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiAidGV4dC9jcWwtaWRlbnRpZmllciIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgImxpYnJhcnkiOiAidXJuOnV1aWQ6YzBlNWRkNjktYTE1YS00NDc3LTkxMTktNDExOTMwYjgwNTk0IiwKICAgICAgICAicmVzb3VyY2VUeXBlIjogIk1lYXN1cmUiLAogICAgICAgICJzY29yaW5nIjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogImNvaG9ydCIsCiAgICAgICAgICAgICAgICAgICAgInN5c3RlbSI6ICJodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL21lYXN1cmUtc2NvcmluZyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgICAgICJzdWJqZWN0Q29kZWFibGVDb25jZXB0IjogewogICAgICAgICAgICAiY29kaW5nIjogWwogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJjb2RlIjogIlBhdGllbnQiLAogICAgICAgICAgICAgICAgICAgICJzeXN0ZW0iOiAiaHR0cDovL2hsNy5vcmcvZmhpci9yZXNvdXJjZS10eXBlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgInVybCI6ICJ1cm46dXVpZDo4OGRiMTMwNS1hYjM4LTRhMzgtODVmZC04ZDdhNGM4YmMyZGYiCiAgICB9Cn0="
+						},
+						{
+							"key": "query-format",
+							"value": "CQL_DATA"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp-qb&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp-qb"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full JSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp&output-format=JSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full JSON Copy - thesis testing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Specimen&query-format=FHIR_SEARCH&template-id=bbmri-feedback-agent&output-format=JSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Specimen"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "bbmri-feedback-agent"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MeasureReportSpecimens",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=MeasureReport?_id=DDCJ6UYDXP7GPYJG&query-format=FHIR_SEARCH&template-id=bbmri-measure-report-specimen&output-format=JSON",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "MeasureReport?_id=DDCJ6UYDXP7GPYJG"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "bbmri-measure-report-specimen"
+						},
+						{
+							"key": "output-format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full XML",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp&output-format=XML",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "XML"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full Opal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=opal-ccp&output-format=OPAL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "opal-ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "OPAL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full Opal BK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "UN3dGFmB42FXQOAv0FTtwNG/6PXQeETZ4YkG1cWO9fg2PsSg57/lGJbYovMAg+wL",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://e260-nb02wl.inet.dkfz-heidelberg.de/ccp-exporter/request?query=Patient&query-format=FHIR_SEARCH&template-id=opal-ccp&output-format=OPAL",
+					"protocol": "https",
+					"host": [
+						"e260-nb02wl",
+						"inet",
+						"dkfz-heidelberg",
+						"de"
+					],
+					"path": [
+						"ccp-exporter",
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "opal-ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "OPAL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full Opal Serv-05",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kX7zsp6vxQMuBfD5fIMVNAeusCK2zZSh9E1TLGUKwlE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://e260-serv-05/ccp-exporter/request?query=Patient&query-format=FHIR_SEARCH&template-id=opal-ccp&output-format=OPAL",
+					"protocol": "https",
+					"host": [
+						"e260-serv-05"
+					],
+					"path": [
+						"ccp-exporter",
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "opal-ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "OPAL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full Excel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp&output-format=EXCEL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full Excel (BK)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "UN3dGFmB42FXQOAv0FTtwNG/6PXQeETZ4YkG1cWO9fg2PsSg57/lGJbYovMAg+wL",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://e260-nb02wl.inet.dkfz-heidelberg.de/ccp-exporter/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp&output-format=EXCEL",
+					"protocol": "https",
+					"host": [
+						"e260-nb02wl",
+						"inet",
+						"dkfz-heidelberg",
+						"de"
+					],
+					"path": [
+						"ccp-exporter",
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Full CSV QB (BK)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "UN3dGFmB42FXQOAv0FTtwNG/6PXQeETZ4YkG1cWO9fg2PsSg57/lGJbYovMAg+wL",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://e260-nb02wl.inet.dkfz-heidelberg.de/ccp-exporter/request?query=Patient&query-format=FHIR_SEARCH&template-id=ccp-qb&output-format=CSV",
+					"protocol": "https",
+					"host": [
+						"e260-nb02wl",
+						"inet",
+						"dkfz-heidelberg",
+						"de"
+					],
+					"path": [
+						"ccp-exporter",
+						"request"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "template-id",
+							"value": "ccp-qb"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simple CSV -  Template in Body",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<template id=\"test-template1\" excel-filename=\"simple-export-template-in-body-${TIMESTAMP}.xlsx\">\r\n  <container csv-filename=\"patient-${TIMESTAMP}.csv\" excel-sheet=\"Patient\">\r\n    <attribute csv-column=\"Pat-ID\" excel-column=\"Pat-ID\" fhir-path=\"Patient.id\"/>\r\n    <attribute csv-column=\"Pseudonym\" excel-column=\"Pseudonym\" fhir-path=\"Patient.identifier.value\"/>\r\n    <attribute csv-column=\"Gender\" excel-column=\"Gender\" fhir-path=\"Patient.gender.value\"/>\r\n    <attribute csv-column=\"Birthday\" excel-column=\"Birthday\" fhir-path=\"Patient.birthDate.value\"/>\r\n  </container>\r\n  <container csv-filename=\"histology-${TIMESTAMP}.csv\" excel-sheet=\"Histology\">\r\n    <attribute csv-column=\"Histology-ID\" excel-column=\"Histology-ID\" fhir-path=\"Observation.where(code.coding.code = '59847-4').id\"/>\r\n    <attribute csv-column=\"Code\" excel-column=\"Code\" fhir-path=\"Observation.where(code.coding.code = '59847-4').value.coding.code\"/>\r\n    <attribute csv-column=\"Pat-ID\" excel-column=\"Pat-ID\" fhir-path=\"Observation.where(code.coding.code = '59847-4').subject.reference.value\"/>\r\n    <attribute csv-column=\"Gender\" excel-column=\"Gender\" fhir-path=\"Patient.gender.value\" child-fhir-path=\"Observation.where(code.coding.code = '59847-4').subject.reference.value\"/>\r\n  </container>\r\n  <container csv-filename=\"molecular-marker-${TIMESTAMP}.csv\" excel-sheet=\"Molecular Marker\">\r\n    <attribute csv-column=\"Molecular-Marker-ID\" excel-column=\"Molecular-Marker-ID\" fhir-path=\"Observation.where(code.coding.code = '69548-6').id\" />\r\n    <attribute csv-column=\"Code\" excel-column=\"Code\" fhir-path=\"Observation.where(code.coding.code = '69548-6').value.coding.code\" />\r\n    <attribute csv-column=\"Component-Code\" excel-column=\"Component-Code\" fhir-path=\"Observation.where(code.coding.code = '69548-6').component.value.coding.code\" />\r\n    <attribute csv-column=\"Pat-ID\" excel-column=\"Pat-ID\" fhir-path=\"Observation.where(code.coding.code = '69548-6').subject.reference.value\" />\r\n  </container>\r\n\r\n  <fhir-rev-include>Observation:patient</fhir-rev-include>\r\n  <!--  <fhir-rev-include>Condition:patient</fhir-rev-include>\r\n    <fhir-rev-include>Specimen:patient</fhir-rev-include>\r\n    <fhir-rev-include>Procedure:patient</fhir-rev-include>\r\n    <fhir-rev-include>MedicationStatement:patient</fhir-rev-include>\r\n    <fhir-rev-include>ClinicalImpression:patient</fhir-rev-include> -->\r\n</template>\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8092/retrieve-query?query=Patient&query-format=FHIR_SEARCH&output-format=EXCEL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"retrieve-query"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "output-format",
+							"value": "EXCEL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simple CSV",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/retrieve-query?query=Patient&template-id=test-template1&query-format=FHIR_SEARCH&output-format=CSV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"retrieve-query"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "template-id",
+							"value": "test-template1"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "output-format",
+							"value": "CSV"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Query",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/create-query?query=Patient&query-format=FHIR_SEARCH&query-label=Test Query&query-description=This is a query for testing&query-contact-id=1234&query-expiration-date=2023-06-23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"create-query"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "Patient"
+						},
+						{
+							"key": "query-format",
+							"value": "FHIR_SEARCH"
+						},
+						{
+							"key": "query-label",
+							"value": "Test Query"
+						},
+						{
+							"key": "query-description",
+							"value": "This is a query for testing"
+						},
+						{
+							"key": "query-contact-id",
+							"value": "1234"
+						},
+						{
+							"key": "query-expiration-date",
+							"value": "2023-06-23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Queries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/queries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"queries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Queries by query id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/queries?query-id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"queries"
+					],
+					"query": [
+						{
+							"key": "query-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Queries (Paging)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/queries?page=0&page-size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"queries"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "page-size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Query Executions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-executions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-executions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Query Executions by query id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-executions?query-id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-executions"
+					],
+					"query": [
+						{
+							"key": "query-id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Query Executions by query execution id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-executions?query-execution-id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-executions"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Query Executions (Paging)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-executions?page=0&page-size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-executions"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "page-size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Query Execution Errors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-execution-errors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-execution-errors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Query Execution Errors by query execution id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-execution-errors?query-execution-id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-execution-errors"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Query Execution Errors (Paging)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/query-execution-errors?page=0&page-size=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"query-execution-errors"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "page-size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Resource",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/response?query-execution-id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"response"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Active Inquiries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/active-inquiries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"active-inquiries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Active Inquiries (BK)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "UN3dGFmB42FXQOAv0FTtwNG/6PXQeETZ4YkG1cWO9fg2PsSg57/lGJbYovMAg+wL",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://e260-nb02wl.inet.dkfz-heidelberg.de/ccp-exporter/active-inquiries",
+					"protocol": "https",
+					"host": [
+						"e260-nb02wl",
+						"inet",
+						"dkfz-heidelberg",
+						"de"
+					],
+					"path": [
+						"ccp-exporter",
+						"active-inquiries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Inquiry",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/inquiry?query-id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"inquiry"
+					],
+					"query": [
+						{
+							"key": "query-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Active Inquiries CORS",
+			"request": {
+				"method": "OPTIONS",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "http://localhost:9000",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/active-inquiries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"active-inquiries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Archived Inquiries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/archived-inquiries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"archived-inquiries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Error Inquiries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/error-inquiries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"error-inquiries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Template Ids",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/template-ids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"template-ids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Template",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/template?template-id=ccp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"template"
+					],
+					"query": [
+						{
+							"key": "template-id",
+							"value": "ccp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Input Formats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/input-formats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"input-formats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Output Formats",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/output-formats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"output-formats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Template Graph of template-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/template-graph?template-id=ccp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"template-graph"
+					],
+					"query": [
+						{
+							"key": "template-id",
+							"value": "ccp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Template Graph of template-id with XML output format",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/template-graph?template-id=ccp&output-format=XML",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"template-graph"
+					],
+					"query": [
+						{
+							"key": "template-id",
+							"value": "ccp"
+						},
+						{
+							"key": "output-format",
+							"value": "XML"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Template Graph of query execution id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/template-graph?query-execution-id=432",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"template-graph"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "432"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get query execution status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "ttsHGwSITs0Eq8L63YWtLVyHymBmULvZIihL6w4t42FBmzp6Eb9SGNd7fZmeUtAI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8092/status?query-execution-id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"status"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CSV filtered by pivot column and counter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/response?query-execution-id=301&pivot=Patient.Patient-ID&page=0&page-size=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"response"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "301"
+						},
+						{
+							"key": "pivot",
+							"value": "Patient.Patient-ID"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "page-size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CSV filtered by pivot column and value",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/response?query-execution-id=301&pivot=Patient.Patient-ID&pivot-value=Pat_10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"response"
+					],
+					"query": [
+						{
+							"key": "query-execution-id",
+							"value": "301"
+						},
+						{
+							"key": "pivot",
+							"value": "Patient.Patient-ID"
+						},
+						{
+							"key": "pivot-value",
+							"value": "Pat_10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
