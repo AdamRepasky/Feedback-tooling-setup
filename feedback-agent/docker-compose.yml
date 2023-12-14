@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+  feedback-agent-be:
+    image: 'feedback-agent:latest'
+    build:
+      context: ./target
+    container_name: feedback-agent-be
+    expose:
+      - 8072
+    ports:
+      - 8072:8072
+    depends_on:
+      - feedback-agent-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://feedback-agent-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - BEAM_PROXY_URI=http://dev-proxy2-1:8082
+      - FEEDBACK_HUB_URL=http://feedback-hub-be:8071
+      - BLAZE_BASE_URL=http://teiler-docker_blaze_1:8080/fhir
+      - APP1_SECRET=App1Secret
+      - PROXY_ID=app1.proxy2.broker
+    networks:
+      - teiler
+      - outer
+          
+  feedback-agent-db:
+    image: 'postgres:13.1-alpine'
+    container_name: feedback-agent-db
+    expose:
+      - 5432
+    #ports:
+    #  - 5432:5432
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    networks:
+      - teiler
+  feedback-agent-ui:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile_fba
+    ports:
+      - "8096:8096"  
+    networks:
+      - teiler
+      
+networks:
+  teiler:
+    name: "teiler"
+  outer:
+    name: "outer"

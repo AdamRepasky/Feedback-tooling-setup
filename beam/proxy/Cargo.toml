@@ -1,0 +1,56 @@
+[package]
+name = "proxy"
+version = "0.7.0"
+edition = "2021"
+license = "Apache-2.0"
+documentation = "https://github.com/samply/beam"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+shared = { path = "../shared", features = ["config-for-proxy"] }
+beam-lib = { workspace = true }
+
+tokio = { version = "1", features = ["full"] }
+async-recursion = "1.0.0"
+axum = { version = "0.6", features = ["macros"] }
+hyper = { version = "0.14.19", features = ["full"] }
+
+# for HTTP client
+hyper-tls = "0.5.0"
+httpdate = "1.0.2"
+hyper-proxy = "0.9.1"
+
+# Error handling
+thiserror = "1.0.31"
+anyhow = "1.0.58"
+backoff = { version = "0.4.0", features = ["tokio"] }
+
+# Logging is imported through shared
+tracing = "0.1.35"
+#tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
+
+# Config file parsing
+serde = "1"
+serde_json = "1"
+
+# Encryption handling
+rsa = "0.9.2"
+
+# Server-sent Events (SSE) support
+tokio-util = { version = "0.7.7", features = ["io"] }
+futures = "0.3.26"
+async-sse = "5.1.0"
+async-stream = "0.3.4"
+
+# Socket dependencies
+chacha20poly1305 = { version = "0.10.1", features = ["stream"], optional = true }
+bytes = { version = "1.4", optional = true}
+dashmap =  { version = "5.4", optional = true}
+
+
+[features]
+sockets = ["dep:bytes", "dep:chacha20poly1305", "dep:dashmap", "tokio-util/codec", "tokio-util/compat", "shared/sockets", "shared/expire_map"]
+
+[build-dependencies]
+build-data = "0"

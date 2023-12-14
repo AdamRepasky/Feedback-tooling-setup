@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+  feedback-hub-be:
+    image: 'feedback-hub:latest'
+    build:
+      context: ./target
+    container_name: feedback-hub-be
+    expose:
+      - 8071
+    ports:
+      - 8071:8071
+    depends_on:
+      - feedback-hub-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://feedback-hub-db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - BEAM_PROXY_URI=http://dev-proxy1-1:8081
+      - PROXY_TASK_BACKOFF_MS=1000
+      - PROXY_TASK_MAX_TRIES=5
+      - PROXY_TASK_TTL=30s
+      - FEEDBACK_HUB_BEAM_ID=app1.proxy1.broker
+      - FEEDBACK_AGENTS_COUNT=1
+      - FEEDBACK_AGENT_BEAM_IDS=["app1.proxy2.broker"]
+      - APP1_SECRET=App1Secret
+    networks:
+      - negotiator
+      - outer
+          
+  feedback-hub-db:
+    image: 'postgres:13.1-alpine'
+    container_name: feedback-hub-db
+    expose:
+      - 5432
+    #ports:
+    #  - 5432:5432
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    networks:
+      - negotiator
+
+  feedback-hub-ui:
+    build:
+      context: ./feedback-hub-ui
+      dockerfile: Dockerfile_fbh
+    environment:
+      - BACKEND_URI=http://feedback-hub-be:8071
+    ports:
+      - "8095:8095"
+    networks:
+      - outer
+      
+networks:
+  negotiator:
+    name: "negotiator"
+  outer:
+    name: "outer"

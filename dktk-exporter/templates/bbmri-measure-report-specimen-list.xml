@@ -1,0 +1,8 @@
+<template id="bbmri-measure-report-specimen-list" excel-filename="Export-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.xlsx" source-id="blaze-store" >
+
+    <container csv-filename="SpecimenList-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.csv" excel-sheet="SpecimenList"  xml-filename="SpecimenList-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.xml" xml-root-element="SpecimenList" xml-element="SpecimenList" json-filename="SpecimenList-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.json" json-key="SpecimenList">
+        <attribute default-name="listID" val-fhir-path="MeasureReport.group.where(code.text.value = 'specimen').population.subjectResults.reference.value"/>
+    </container>
+
+</template>
+

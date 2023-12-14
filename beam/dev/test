@@ -1,0 +1,43 @@
+#!/bin/bash -e
+
+SD=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+cd $SD
+
+source beamdev noop
+
+function start() {
+  trap "echo; echo; clean" EXIT
+  start_bg
+}
+
+function test() {
+  for test in test_*.sh; do
+    echo "======="
+    echo "=> $(basename $test) ..."
+    source $test
+  done
+  
+  echo -e "  ${COL_GREEN}All tests have completed successfully.${COL_NONE}"
+}
+
+case "$1" in
+  noci)
+    test
+    shift
+    cargo test $@
+    ;;
+  ci)
+    start
+    test
+    shift
+    for testbin in $SD/../testbinaries/*; do
+      chmod +x $testbin
+      $testbin
+    done
+    ;;
+  *)
+    echo "Usage: $0 noci|ci"
+    exit 1
+    ;;
+esac

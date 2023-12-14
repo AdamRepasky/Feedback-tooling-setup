@@ -1,0 +1,11 @@
+<template id="bbmri-feedback-agent" excel-filename="Export-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.xlsx" source-id="blaze-store" >
+  <container csv-filename="Sample-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.csv" excel-sheet="Sample"  xml-filename="Sample-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.xml" xml-root-element="Samples" xml-element="Sample" json-filename="Sample-${TIMESTAMP:yyyyMMdd-HH_mm_ss_SSS}.json" json-key="Samples">
+    <attribute csv-column="sampleID" xml-element="sampleID" json-key="sampleID" excel-column="sampleID" val-fhir-path="Specimen.id" op="EXTRACT_RELATIVE_ID"/>
+    <attribute csv-column="patientID" xml-element="patientID" json-key="patientID" excel-column="patientID" val-fhir-path="Specimen.subject.reference.value"/>
+    <attribute csv-column="collectionDate" xml-element="collectionDate" json-key="collectionDate" excel-column="collectionDate" val-fhir-path="Specimen.collection.collectedDateTime.value"/>
+    <attribute csv-column="type" xml-element="type" json-key="type" excel-column="type" val-fhir-path="Specimen.type.coding.code.value"/>
+  </container>
+
+  <!-- <fhir-rev-include>Patient:specimen</fhir-rev-include> -->
+
+</template>
